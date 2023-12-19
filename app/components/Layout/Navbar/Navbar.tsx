@@ -5,7 +5,7 @@ import Button from "../Button/Button";
 const Navbar = () => {
   return (
     <nav className="w-full p-6 bg-woodsmoke-950 h-[20%] flex flex-row justify-between">
-      {/* Icon and Title container */}
+      {/* Icon and title container */}
       <div className="w-auto flex flex-row gap-4 items-center justify-center ">
         <Image src="./wifi-icon.svg" width={40} height={40} alt="wifi icon" />
         <h1 className="text-xl text-white font-medium">
