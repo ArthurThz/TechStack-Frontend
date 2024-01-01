@@ -8,10 +8,31 @@ const UserProfile = () => {
   const [hideOptions,setHideOptions] = useState("hidden")
   const [hideEdit,setHideEdit] = useState("block")
   const [inputStatus,setInputStatus] = useState(true)
+  const userInfo  = {
+    nome:"aa",
+    sobrenome:"sss",
+    cpf:"fff",
+    telefone:"cccc",
+    email:"bbbb",
+    profissao:"nnnn"
+ 
+  } 
+
+  let userData = Object.keys(userInfo)
+
+  const data = ["Arthur","Theodoro",12345678910,"(11) 98888-8888","arthur@mail.com","Front-end Developer"]
+  console.log(console.log(typeof userInfo.cpf))
+ 
+  userData.forEach((item : string) => {
+    // for(let i = 0; i < data.length; i++){
+      
+    // }
+  })
 
   
 
   const showOptions = () =>{
+
     if(hideOptions === "hidden"){
       setHideOptions("block")
       setHideEdit("hidden")
