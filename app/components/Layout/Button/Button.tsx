@@ -4,7 +4,7 @@ import { IButton } from "./types";
 const Button = ({ label, variant = "primary", classname , onclick}: IButton) => {
   return (
     <button
-      onClick={onclick}
+      onClick={onclick} 
       className={`w-28 p-2 text-white rounded-md transition delay-100 ease-out ${classname} 
       ${
         variant == "primary"
