@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const Sidebar = () => {
@@ -15,20 +16,29 @@ const Sidebar = () => {
       <div className="h-[80%] w-auto flex flex-col items-center justify-between   p-2">
         <div className="w-full flex flex-col gap-4 items-center">
           {/* Home / Login Button */}
-          <button className="w-40 flex flex-row items-center justify-center gap-6 text-sm text-white border border-woodsmoke-800 transition ease-in-out delay-[.4ms] rounded-md h-11  hover:border-green-haze-500">
+          <Link
+            href="/"
+            className="w-40 flex flex-row items-center justify-center gap-6 text-sm text-white border border-woodsmoke-800 transition ease-in-out delay-[.4ms] rounded-md h-11  hover:border-green-haze-500"
+          >
             <Image src="/home.png" alt="home icon" width={22} height={22} />
             Home
-          </button>
+          </Link>
           {/* My Posts Button */}
-          <button className="w-40 flex flex-row items-center justify-center gap-6 text-sm text-white border border-woodsmoke-800 transition ease-in-out delay-[.4ms] rounded-md h-11  hover:border-green-haze-500">
+          <Link
+            href="/MyPosts"
+            className="w-40 flex flex-row items-center justify-center gap-6 text-sm text-white border border-woodsmoke-800 transition ease-in-out delay-[.4ms] rounded-md h-11  hover:border-green-haze-500"
+          >
             <Image src="/pencil.png" alt="pencil icon" width={22} height={22} />
             My Posts
-          </button>
+          </Link>
           {/* Profile Button */}
-          <button className="w-40 flex flex-row items-center justify-center gap-6 text-sm text-white border border-woodsmoke-800 transition ease-in-out delay-[.4ms] rounded-md h-11  hover:border-green-haze-500">
+          <Link
+            href="/Profile"
+            className="w-40 flex flex-row items-center justify-center gap-6 text-sm text-white border border-woodsmoke-800 transition ease-in-out delay-[.4ms] rounded-md h-11  hover:border-green-haze-500"
+          >
             <Image src="/user.png" alt="user icon" width={22} height={22} />
             Profile
-          </button>
+          </Link>
         </div>
         {/* Exit / Sign-up Button */}
         <button className="w-40  flex flex-row items-center justify-center gap-6 text-sm text-white border border-woodsmoke-800 transition ease-in-out delay-[.4ms] rounded-md h-11  hover:border-green-haze-500">
