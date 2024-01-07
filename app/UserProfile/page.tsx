@@ -20,7 +20,6 @@ const UserProfile = () => {
   };
 
   const UserDataEntries = Object.entries(userData);
-  // console.log(entries);
 
   const showOptions = () => {
     if (hideOptions === "hidden") {
@@ -72,7 +71,7 @@ const UserProfile = () => {
           onclick={showOptions}
         />
       </div>
-
+      {/* Render the inputs based on user information */}
       <div className="w-full h-auto grid grid-cols-2 grid-rows-3 gap-7 p-6">
         {UserDataEntries.map(([field, userinfo], index) => (
           <Input
