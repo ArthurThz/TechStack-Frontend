@@ -25,7 +25,7 @@ const Input = ({
           onChange={onChange}
           disabled={disabled}
           placeholder={placeholder}
-          required
+          autoComplete="off"
         />
       </div>
     </div>

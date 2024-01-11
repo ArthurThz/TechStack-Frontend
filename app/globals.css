@@ -7,3 +7,36 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+.input{
+    min-width: 70%;
+    height: 3rem;
+
+    padding: 0 .5rem 0 .5rem;    
+
+    border:1px solid #1c1c1c;
+    border-radius: 0.375rem;
+    outline: none;
+
+    background-color: #4f4f4f;
+
+    color:#fff;
+}
+
+.input:disabled{
+    background-color: transparent;
+    border: 1px solid #37996b ;
+}
+
+.input:focus-within{
+    outline:2px solid #37996b;
+    outline-offset: 2px;
+}
+
+.input::placeholder{
+    font-size: 1rem;    
+    font-weight: medium;
+    letter-spacing: 1px;
+    color:#89cca9;
+}
+
