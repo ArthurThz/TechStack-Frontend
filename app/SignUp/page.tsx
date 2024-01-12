@@ -17,15 +17,10 @@ const SignUp = () => {
     getValues,
   } = useForm();
 
-  // const handleOnChange = (event) => {
-  //   const { name, value } = event.target;
-
-  // };
-
   const onSubmit = async (data: FieldValues) => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
-    console.log("entrou");
+    console.log(data);
 
     reset();
   };
@@ -131,6 +126,7 @@ const SignUp = () => {
             <div className=" w-full flex flex-col gap-2">
               <input
                 type="password"
+                autoComplete="off"
                 placeholder="Senha *"
                 {...register("senha", {
                   required: "Campo obrigatório, por favor preencha!",
@@ -149,6 +145,7 @@ const SignUp = () => {
             <div className=" w-full flex flex-col gap-2">
               <input
                 type="password"
+                autoComplete="off"
                 placeholder="Repetir Senha *"
                 {...register("repetirSenha", {
                   required: "Campo obrigatório, por favor preencha!",
