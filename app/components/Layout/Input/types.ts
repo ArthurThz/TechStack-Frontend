@@ -7,5 +7,6 @@ export interface IInput {
     type:string;
     disabled?:boolean;
     placeholder?:string;
+    value?:string;
     
 }

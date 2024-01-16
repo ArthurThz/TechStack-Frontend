@@ -8,6 +8,7 @@ const Input = ({
   type,
   disabled,
   placeholder,
+  value,
 }: IInput) => {
   return (
     <div className="w-full flex flex-col rounded-md h-auto">
@@ -26,6 +27,7 @@ const Input = ({
           disabled={disabled}
           placeholder={placeholder}
           autoComplete="off"
+          value={value}
         />
       </div>
     </div>

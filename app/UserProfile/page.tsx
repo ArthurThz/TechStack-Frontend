@@ -4,22 +4,28 @@ import React, { useState } from "react";
 import Input from "../components/Layout/Input/Input";
 import Button from "../components/Layout/Button/Button";
 import { IUserData } from "./types";
+import { useEffect } from "react";
+import { apiRoute } from "@/services/api";
+import { userInfo } from "os";
 
 const UserProfile = () => {
   const [hideOptions, setHideOptions] = useState("hidden");
   const [hideEdit, setHideEdit] = useState("block");
   const [inputStatus, setInputStatus] = useState(true);
+  const [user, setUser] = useState({});
+  let userInformation = {};
 
-  const userData: IUserData = {
-    nome: "Arthur",
-    sobrenome: "Theodoro",
-    cpf: "12345678910",
-    email: "arthur@mail.com",
-    telefone: "(11) 98888-888",
-    profissao: "Front-end Developer",
-  };
+  useEffect(() => {
+    apiRoute
+      .get("/user/12345678910")
+      .then((response) => {
+        const { data } = response;
+        setUser(data[0]);
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
-  const UserDataEntries = Object.entries(userData);
+  const UserDataEntries = Object.entries(user);
 
   const showOptions = () => {
     if (hideOptions === "hidden") {
@@ -29,7 +35,18 @@ const UserProfile = () => {
     } else {
       setHideOptions("hidden");
       setHideEdit("block");
+      userInformation = user;
       setInputStatus(true);
+    }
+  };
+  interface IChangeEvent {
+    event?: React.ChangeEvent<HTMLTextAreaElement>;
+    target: HTMLInputElement;
+  }
+  const handleOnChange = (event: IChangeEvent) => {
+    const { value, name } = event.target;
+    if (name != "cpf") {
+      userInformation = { ...userInformation, [name]: value };
     }
   };
   return (
@@ -79,8 +96,10 @@ const UserProfile = () => {
             label={field}
             name={field}
             type="text"
-            placeholder={userinfo}
+            placeholder={`${userinfo}`}
             disabled={inputStatus}
+            value={`${userinfo}`}
+            onChange={handleOnChange}
           />
         ))}
       </div>
