@@ -1,14 +1,25 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { apiRoute } from "../../services/api";
 
 import type { FieldValues } from "react-hook-form";
 
 import Input from "../components/Layout/Input/Input";
 import Button from "../components/Layout/Button/Button";
 import { IChangeEvent, ISubmitEvent } from "./types";
+import { useRouter } from "next/navigation";
 
 const SignUp = () => {
+  const router = useRouter();
+  const redirect = false;
+
+  // useEffect(() => {
+  //   if (redirect) {
+  //     router.push("/");
+  //   }
+  // }, [redirect]);
+
   const {
     register,
     handleSubmit,
@@ -18,11 +29,19 @@ const SignUp = () => {
   } = useForm();
 
   const onSubmit = async (data: FieldValues) => {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    apiRoute
+      .post("/user", data)
+      .then(() => {
+        alert("Usuário cadastrado com sucesso!");
+        reset();
+        router.push("/");
+      })
+      .catch((error) => {
+        const errorMessage = error.response.data.errorMessage;
 
-    console.log(data);
-
-    reset();
+        alert(errorMessage);
+        return;
+      });
   };
   return (
     <div className="w-full min-h-screen flex flex-col items-center justify-center p-10 bg-woodsmoke-950 overflow-y-auto">

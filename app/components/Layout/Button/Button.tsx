@@ -19,7 +19,7 @@ const Button = ({
       className={`w-28 p-2 text-white rounded-md transition delay-100 ease-out ${classname} 
       ${
         variant == "primary"
-          ? " bg-primary-btn hover:bg-green-haze-400 disabled:bg-green-haze-900"
+          ? " bg-primary-btn hover:bg-green-haze-400 disabled:bg-woodsmoke-800"
           : " border border-green-haze-500 hover:bg-woodsmoke-800"
       }`}
     >
