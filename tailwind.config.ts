@@ -12,6 +12,7 @@ const config: Config = {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+          'green-wallpaper':"linear-gradient(to right, rgb(28, 28, 28, 95%), rgb(28, 28, 28, 60%)),url('../public/gray-wallpaper.jpg')"
       },
       colors:{
         'woodsmoke': {

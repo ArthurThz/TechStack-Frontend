@@ -4,6 +4,7 @@ import Button from "../Button/Button";
 import Link from "next/link";
 
 const Navbar = () => {
+  const isAuth = false;
   return (
     <nav
       className="w-[25%] p-6 
@@ -19,29 +20,56 @@ const Navbar = () => {
       </div>
       {/* Options container */}
       <div className="w-full h-full py-14 flex flex-col items-center p-4 gap-2 justify-between ">
-        <div className="h-auto flex flex-col items-center gap-3">
-          <Link
-            href="/"
-            className="w-32 h-auto border border-woodsmoke-900 text-white justify-center p-1  rounded-md flex flex-row items-center gap-4 hover:border-green-haze-500 transition-all delay-100 ease-in-out "
-          >
-            Home
-          </Link>
-          <Link
-            href="/MyPosts"
-            className="w-32 h-auto border border-woodsmoke-900 text-white justify-center p-1  rounded-md flex flex-row items-center gap-4 hover:border-green-haze-500 transition-all delay-100 ease-in-out "
-          >
-            My Posts
-          </Link>
-          <Link
-            href="/UserProfile"
-            className="w-32 h-auto border border-woodsmoke-900 text-white justify-center p-1  rounded-md flex flex-row items-center gap-4 hover:border-green-haze-500 transition-all delay-100 ease-in-out "
-          >
-            Profile
-          </Link>
-        </div>
-        <button className="w-32 h-auto border border-woodsmoke-900 text-white justify-center p-1  rounded-md flex flex-row items-center gap-4 hover:border-green-haze-500 transition-all delay-100 ease-in-out ">
-          Exit
-        </button>
+        {isAuth ? (
+          <>
+            <div className="h-auto flex flex-col items-center gap-3">
+              <Link
+                href="/"
+                className="w-32 h-auto border border-woodsmoke-900 text-white justify-center p-1  rounded-md flex flex-row items-center gap-4 hover:border-green-haze-500 transition-all delay-100 ease-in-out "
+              >
+                Home
+              </Link>
+              <Link
+                href="/MyPosts"
+                className="w-32 h-auto border border-woodsmoke-900 text-white justify-center p-1  rounded-md flex flex-row items-center gap-4 hover:border-green-haze-500 transition-all delay-100 ease-in-out "
+              >
+                My Posts
+              </Link>
+              <Link
+                href="/UserProfile"
+                className="w-32 h-auto border border-woodsmoke-900 text-white justify-center p-1  rounded-md flex flex-row items-center gap-4 hover:border-green-haze-500 transition-all delay-100 ease-in-out "
+              >
+                Profile
+              </Link>
+            </div>
+            <button className="w-32 h-auto border border-woodsmoke-900 text-white justify-center p-1  rounded-md flex flex-row items-center gap-4 hover:border-green-haze-500 transition-all delay-100 ease-in-out ">
+              Exit
+            </button>
+          </>
+        ) : (
+          <>
+            <div className="h-auto flex flex-col items-center gap-3">
+              <Link
+                href="/"
+                className="w-32 h-auto border border-woodsmoke-900 text-white justify-center p-1  rounded-md flex flex-row items-center gap-4 hover:border-green-haze-500 transition-all delay-100 ease-in-out "
+              >
+                Home
+              </Link>
+              <Link
+                href="/LogIn"
+                className="w-32 h-auto border border-woodsmoke-900 text-white justify-center p-1  rounded-md flex flex-row items-center gap-4 hover:border-green-haze-500 transition-all delay-100 ease-in-out "
+              >
+                Login
+              </Link>
+              <Link
+                href="/SignUp"
+                className="w-32 h-auto border border-woodsmoke-900 text-white justify-center p-1  rounded-md flex flex-row items-center gap-4 hover:border-green-haze-500 transition-all delay-100 ease-in-out "
+              >
+                Sign Up
+              </Link>
+            </div>
+          </>
+        )}
       </div>
     </nav>
   );

@@ -1,29 +1,46 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Input from "../components/Layout/Input/Input";
 import Button from "../components/Layout/Button/Button";
-import { IUserData } from "./types";
 import { useEffect } from "react";
 import { apiRoute } from "@/services/api";
-import { userInfo } from "os";
 
 const UserProfile = () => {
+  // states
   const [hideOptions, setHideOptions] = useState("hidden");
   const [hideEdit, setHideEdit] = useState("block");
   const [inputStatus, setInputStatus] = useState(true);
   const [user, setUser] = useState({});
+  const [userHeaderInfo, setUserHeaderInfo] = useState({
+    nome: "",
+    sobrenome: "",
+    profissao: "",
+    qtdPosts: 0,
+    profilePicture: "",
+  });
+
   let userInformation = {};
+  const userRef = React.useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     apiRoute
       .get("/user/12345678910")
       .then((response) => {
         const { data } = response;
+        const { nome, sobrenome, profissao } = data[0];
+
         setUser(data[0]);
+        setUserHeaderInfo({
+          nome: nome,
+          sobrenome: sobrenome,
+          profissao: profissao,
+          qtdPosts: 0,
+          profilePicture: "",
+        });
       })
       .catch((error) => console.log(error));
-  }, []);
+  }, [user]);
 
   const UserDataEntries = Object.entries(user);
 
@@ -31,24 +48,21 @@ const UserProfile = () => {
     if (hideOptions === "hidden") {
       setHideOptions("block");
       setHideEdit("hidden");
-      setInputStatus(false);
-    } else {
-      setHideOptions("hidden");
+    }
+  };
+
+  const cancelEdit = () => {
+    if (hideOptions === "block") {
       setHideEdit("block");
-      userInformation = user;
-      setInputStatus(true);
+      setHideOptions("hidden");
+      console.log(userRef);
     }
   };
   interface IChangeEvent {
     event?: React.ChangeEvent<HTMLTextAreaElement>;
     target: HTMLInputElement;
   }
-  const handleOnChange = (event: IChangeEvent) => {
-    const { value, name } = event.target;
-    if (name != "cpf") {
-      userInformation = { ...userInformation, [name]: value };
-    }
-  };
+
   return (
     <div className="w-full h-full flex flex-col items-center p-6 overflow-y-auto bg-woodsmoke-950">
       {/* Profile pictture and total amount of posts */}
@@ -58,8 +72,11 @@ const UserProfile = () => {
           <div className="w-[200px] h-[200px] bg-green-haze-500 rounded-full mb-2"></div>
           {/* Professional role */}
           <div className="w-auto h-auto p-1 text-md text-white text-center tracking-wider">
-            <p>Arthur Theodoro</p>
-            <p>Front End Developer</p>
+            <p className="flex flex-row gap-3 items-center">
+              <span>{userHeaderInfo.nome}</span>
+              <span>{userHeaderInfo.sobrenome}</span>
+            </p>
+            <p>{userHeaderInfo.profissao}</p>
           </div>
         </div>
         {/* Total Amount of posts */}
@@ -85,23 +102,50 @@ const UserProfile = () => {
           label="Cancelar"
           variant="secondary"
           classname={hideOptions}
-          onclick={showOptions}
+          onclick={cancelEdit}
         />
       </div>
       {/* Render the inputs based on user information */}
-      <div className="w-full h-auto grid grid-cols-2 grid-rows-3 gap-7 p-6">
-        {UserDataEntries.map(([field, userinfo], index) => (
-          <Input
-            key={index}
-            label={field}
-            name={field}
-            type="text"
-            placeholder={`${userinfo}`}
-            disabled={inputStatus}
-            value={`${userinfo}`}
-            onChange={handleOnChange}
-          />
-        ))}
+      <div className="w-full">
+        <form className="w-full h-auto grid grid-cols-2 grid-rows-3 gap-7 p-6">
+          {hideOptions === "hidden"
+            ? UserDataEntries.map(([field, userinfo], index) => (
+                <input
+                  className="input"
+                  key={index}
+                  // label={field}
+                  name={field}
+                  type={field === "senha" ? "password" : "text"}
+                  placeholder={field === "senha" ? "" : `${userinfo}`}
+                  disabled
+                  autoComplete="off"
+
+                  // value={`${userinfo}`}
+                />
+              ))
+            : UserDataEntries.map(([field, userinfo], index) => (
+                <input
+                  className="input"
+                  key={index}
+                  name={field}
+                  type={field === "senha" ? "password" : "text"}
+                  ref={userRef}
+
+                  // value={`${userinfo}`}
+                />
+              ))}
+          {/* {UserDataEntries.map(([field, userinfo], index) => (
+            <Input
+              key={index}
+              label={field}
+              name={field}
+              type={field === "senha" ? "password" : "text"}
+              placeholder={field === "senha" ? "" : `${userinfo}`}
+              disabled={inputStatus}
+              // value={`${userinfo}`}
+            />
+          ))} */}
+        </form>
       </div>
     </div>
   );
