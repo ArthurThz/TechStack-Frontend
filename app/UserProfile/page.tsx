@@ -5,7 +5,6 @@ import Input from "../components/Layout/Input/Input";
 import Button from "../components/Layout/Button/Button";
 import { useEffect } from "react";
 import { apiRoute } from "@/services/api";
-
 const UserProfile = () => {
   // states
   const [hideOptions, setHideOptions] = useState("hidden");
@@ -40,7 +39,7 @@ const UserProfile = () => {
         });
       })
       .catch((error) => console.log(error));
-  }, [user]);
+  }, []);
 
   const UserDataEntries = Object.entries(user);
 
@@ -130,7 +129,6 @@ const UserProfile = () => {
                   name={field}
                   type={field === "senha" ? "password" : "text"}
                   ref={userRef}
-
                   // value={`${userinfo}`}
                 />
               ))}

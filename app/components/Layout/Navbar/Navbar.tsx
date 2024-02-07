@@ -1,10 +1,13 @@
+"use client";
 import Image from "next/image";
-import React from "react";
-import Button from "../Button/Button";
+
+import React, { useState } from "react";
 import Link from "next/link";
 
 const Navbar = () => {
-  const isAuth = false;
+  const [isAuth, setIsAuth] = useState(false);
+
+  const handleIsAuth = () => setIsAuth(!isAuth);
   return (
     <nav
       className="w-[25%] p-6 
@@ -42,7 +45,10 @@ const Navbar = () => {
                 Profile
               </Link>
             </div>
-            <button className="w-32 h-auto border border-woodsmoke-900 text-white justify-center p-1  rounded-md flex flex-row items-center gap-4 hover:border-green-haze-500 transition-all delay-100 ease-in-out ">
+            <button
+              onClick={handleIsAuth}
+              className="w-32 h-auto border border-woodsmoke-900 text-white justify-center p-1  rounded-md flex flex-row items-center gap-4 hover:border-green-haze-500 transition-all delay-100 ease-in-out "
+            >
               Exit
             </button>
           </>
@@ -68,6 +74,7 @@ const Navbar = () => {
                 Sign Up
               </Link>
             </div>
+            <button onClick={handleIsAuth}>AUTH</button>
           </>
         )}
       </div>

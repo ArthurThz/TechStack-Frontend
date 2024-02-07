@@ -1,5 +1,5 @@
 import React from "react";
-import Posts from "../components/Main/Posts/Posts";
+import Posts from "../components/pages/MyPosts/Posts/Posts";
 const MyPosts = () => {
   return (
     <div className="w-full h-screen bg-woodsmoke-950 flex flex-col items-center py-5">
