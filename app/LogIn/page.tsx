@@ -5,13 +5,14 @@ import Image from "next/image";
 import Button from "../components/Layout/Button/Button";
 import { logIn } from "@/redux/features/auth-slice";
 import { apiRoute } from "@/services/api";
+import { FieldValue, FieldValues, useForm } from "react-hook-form";
 
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/redux/store";
 
 const MOCKED_USER_LOGIN = {
   email: "arthur@mail.com",
-  senha: "123123",
+  senha: "123123123",
 };
 
 type UserData = {
@@ -23,12 +24,28 @@ const LogIn = () => {
   const [userCpf, setUserCpf] = useState("");
   const [isLogged, setIsLogged] = useState(false);
 
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { disabled },
+  } = useForm();
   const dispatch = useDispatch<AppDispatch>();
 
-  const onClickLogin = async ({ email, senha }: UserData) => {
-    const login = await apiRoute.post("/users/login", MOCKED_USER_LOGIN);
+  const onClickLogin = async (data: FieldValues) => {
+    console.log(data);
+    try {
+      const response = await apiRoute.post("/users/login", data);
 
-    console.log(login);
+      if (response.status !== 201) {
+        alert("Houve um erro verifique os dados e tente novamente");
+        return;
+      }
+
+      console.log(response);
+    } catch (err) {
+      alert("ERROR");
+    }
 
     // dispatch(logIn(userCpf));
 
@@ -44,17 +61,19 @@ const LogIn = () => {
           </h1>
         </div>
         <div className="w-full ">
-          <form className="h-auto items-center flex flex-col gap-3">
+          <form
+            onSubmit={handleSubmit(onClickLogin)}
+            className="h-auto items-center flex flex-col gap-3"
+          >
             <input
               type="text"
-              name="cpf"
-              onChange={(e) => setUserCpf(e.target.value)}
+              {...register("email")}
               className="input w-[80%]"
-              placeholder="CPF"
+              placeholder="E-mail"
             />
             <input
               type="password"
-              name="cpf"
+              {...register("password")}
               className="input w-[80%]"
               placeholder="Senha"
               autoComplete="off"
