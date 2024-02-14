@@ -6,15 +6,33 @@ type initialState= {
 
 type AuthState = {
     isAuth:boolean,
-    cpf:string,
-    uuid:string,
+    id:string,
+    nome:string,
+    sobrenome:string,
+    profissao:string,
+    token:string,
     
+}
+
+type UserData = {
+    token:string,
+    user:{
+        id:string,
+        nome:string,
+        sobrenome:string,
+        profissao:string,
+    
+        }
 }
 const initialState = {
     value:{
         isAuth:false,
-        cpf:"",
-        uuid:"",
+        id:"",
+        nome:"",
+        sobrenome:"",
+        profissao:"",       
+        token:"",
+        
     } as AuthState
 } as initialState
 
@@ -23,12 +41,20 @@ export const auth = createSlice({
     initialState,
     reducers:{
         logOut: () => initialState,
-        logIn: (state, action : PayloadAction<string>) => {
+        logIn: (state, action : PayloadAction<UserData>) => {
+            
+            const { nome,sobrenome,profissao,id}  = action.payload.user
+            const  token  = action.payload.token
+
             return {
                 value:{
                     isAuth:true,
-                    cpf: action.payload,
-                    uuid:"asd0a9dad0a9sda0sd9asd8asda"
+                    token:token,
+                    id,
+                    nome,
+                    sobrenome,
+                    profissao,
+                    
                 }
             }
         }

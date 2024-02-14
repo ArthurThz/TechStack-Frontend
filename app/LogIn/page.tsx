@@ -9,31 +9,22 @@ import { FieldValue, FieldValues, useForm } from "react-hook-form";
 
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/redux/store";
-
-const MOCKED_USER_LOGIN = {
-  email: "arthur@mail.com",
-  senha: "123123123",
-};
-
-type UserData = {
-  email: string;
-  senha: string;
-};
+import { useRouter } from "next/navigation";
 
 const LogIn = () => {
-  const [userCpf, setUserCpf] = useState("");
-  const [isLogged, setIsLogged] = useState(false);
-
+  const router = useRouter();
+  // Hook Form
   const {
     register,
     handleSubmit,
     reset,
-    formState: { disabled },
+    formState: { isSubmitting },
   } = useForm();
+
+  // Redux Dispatch
   const dispatch = useDispatch<AppDispatch>();
 
-  const onClickLogin = async (data: FieldValues) => {
-    console.log(data);
+  const onSubmit = async (data: FieldValues) => {
     try {
       const response = await apiRoute.post("/users/login", data);
 
@@ -42,14 +33,14 @@ const LogIn = () => {
         return;
       }
 
-      console.log(response);
+      const userData = response.data;
+
+      dispatch(logIn(userData));
+
+      router.push("/");
     } catch (err) {
-      alert("ERROR");
+      console.error(err);
     }
-
-    // dispatch(logIn(userCpf));
-
-    // console.log(userCpf);
   };
   return (
     <div className="h-screen w-full p-24 flex flex-col items-center justify-center bg-cover bg-woodsmoke-950 bg-green-wallpaper">
@@ -62,7 +53,7 @@ const LogIn = () => {
         </div>
         <div className="w-full ">
           <form
-            onSubmit={handleSubmit(onClickLogin)}
+            onSubmit={handleSubmit(onSubmit)}
             className="h-auto items-center flex flex-col gap-3"
           >
             <input
@@ -78,15 +69,16 @@ const LogIn = () => {
               placeholder="Senha"
               autoComplete="off"
             />
+            <div className="w-full h-auto flex flex-row justify-center">
+              <Button
+                type="submit"
+                label="Confirmar"
+                variant="primary"
+                classname="w-[60%]"
+                disabled={isSubmitting}
+              />
+            </div>
           </form>
-        </div>
-        <div className="w-full h-auto flex flex-row justify-center">
-          <Button
-            onclick={() => onClickLogin(MOCKED_USER_LOGIN)}
-            label="Confirmar"
-            variant="primary"
-            classname="w-[60%]"
-          />
         </div>
       </div>
     </div>

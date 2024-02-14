@@ -1,18 +1,35 @@
 "use client";
 import Image from "next/image";
-
 import React, { useState } from "react";
-import Link from "next/link";
+import { AppDispatch, useAppSelector } from "@/redux/store";
+import { logOut } from "@/redux/features/auth-slice";
+import { useDispatch } from "react-redux";
+import { useRouter } from "next/navigation";
+import NavItem from "./Navitem";
+import { FaHome } from "react-icons/fa";
+import { FaSquarePlus } from "react-icons/fa6";
+import { FaCommentAlt } from "react-icons/fa";
+import { FaUser } from "react-icons/fa";
+import { FaUserPlus } from "react-icons/fa";
+import { FaWifi } from "react-icons/fa";
 
 const Navbar = () => {
-  const [isAuth, setIsAuth] = useState(false);
+  const router = useRouter();
 
-  const handleIsAuth = () => setIsAuth(!isAuth);
+  const { isAuth } = useAppSelector((state) => state.authReducer.value);
+
+  const dispatch = useDispatch<AppDispatch>();
+
+  const handleLogOut = () => {
+    dispatch(logOut());
+    router.push("/");
+  };
+
   return (
     <nav
-      className="w-[25%] p-6 
+      className="w-[20%] py-3 px-2
       border-r items-center
-     border-green-haze-500 bg-woodsmoke-950 h-screen flex justify-between flex-col"
+     border-green-haze-500 bg-woodsmoke-950 h-screen flex  flex-col"
     >
       {/* Logo container */}
       <div className="flex  flex-row items-center gap-3">
@@ -22,31 +39,31 @@ const Navbar = () => {
         </h1>
       </div>
       {/* Options container */}
-      <div className="w-full h-full py-14 flex flex-col items-center p-4 gap-2 justify-between ">
+      <div className="w-full h-full py-14 flex flex-col items-center  gap-3 justify-start ">
         {isAuth ? (
           <>
-            <div className="h-auto flex flex-col items-center gap-3">
-              <Link
-                href="/"
-                className="w-32 h-auto border border-woodsmoke-900 text-white justify-center p-1  rounded-md flex flex-row items-center gap-4 hover:border-green-haze-500 transition-all delay-100 ease-in-out "
-              >
-                Home
-              </Link>
-              <Link
-                href="/MyPosts"
-                className="w-32 h-auto border border-woodsmoke-900 text-white justify-center p-1  rounded-md flex flex-row items-center gap-4 hover:border-green-haze-500 transition-all delay-100 ease-in-out "
-              >
-                My Posts
-              </Link>
-              <Link
-                href="/UserProfile"
-                className="w-32 h-auto border border-woodsmoke-900 text-white justify-center p-1  rounded-md flex flex-row items-center gap-4 hover:border-green-haze-500 transition-all delay-100 ease-in-out "
-              >
-                Profile
-              </Link>
-            </div>
+            <NavItem href="/">
+              <FaHome />
+              Home
+            </NavItem>
+
+            <NavItem href="/">
+              <FaSquarePlus />
+              New Post
+            </NavItem>
+
+            <NavItem href="/MyPosts">
+              <FaCommentAlt />
+              My Posts
+            </NavItem>
+
+            <NavItem href="/UserProfile">
+              <FaUser />
+              Profile
+            </NavItem>
+
             <button
-              onClick={handleIsAuth}
+              onClick={handleLogOut}
               className="w-32 h-auto border border-woodsmoke-900 text-white justify-center p-1  rounded-md flex flex-row items-center gap-4 hover:border-green-haze-500 transition-all delay-100 ease-in-out "
             >
               Exit
@@ -55,26 +72,19 @@ const Navbar = () => {
         ) : (
           <>
             <div className="h-auto flex flex-col items-center gap-3">
-              <Link
-                href="/"
-                className="w-32 h-auto border border-woodsmoke-900 text-white justify-center p-1  rounded-md flex flex-row items-center gap-4 hover:border-green-haze-500 transition-all delay-100 ease-in-out "
-              >
+              <NavItem href="/">
+                <FaHome />
                 Home
-              </Link>
-              <Link
-                href="/LogIn"
-                className="w-32 h-auto border border-woodsmoke-900 text-white justify-center p-1  rounded-md flex flex-row items-center gap-4 hover:border-green-haze-500 transition-all delay-100 ease-in-out "
-              >
+              </NavItem>
+              <NavItem href="/LogIn">
+                <FaWifi />
                 Login
-              </Link>
-              <Link
-                href="/SignUp"
-                className="w-32 h-auto border border-woodsmoke-900 text-white justify-center p-1  rounded-md flex flex-row items-center gap-4 hover:border-green-haze-500 transition-all delay-100 ease-in-out "
-              >
+              </NavItem>
+              <NavItem href="/SignUp">
+                <FaUserPlus />
                 Sign Up
-              </Link>
+              </NavItem>
             </div>
-            <button onClick={handleIsAuth}>AUTH</button>
           </>
         )}
       </div>
