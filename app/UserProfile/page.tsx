@@ -1,150 +1,108 @@
 "use client";
 
-import React, { useRef, useState } from "react";
-import Input from "../components/Layout/Input/Input";
-import Button from "../components/Layout/Button/Button";
+import React, { useState } from "react";
+
 import { useEffect } from "react";
 import { apiRoute } from "@/services/api";
+
+import Image from "next/image";
+import Link from "next/link";
+import PostItem from "../components/pages/Profile/post-item";
+import { useAppSelector } from "@/redux/store";
+import { PostProps } from "../components/types/posts";
+import PostContainer from "../components/pages/Profile/post-container";
+import { AiOutlineLoading } from "react-icons/ai";
+
+type UserProps = {
+  nome: string;
+  sobrenome: string;
+  profissao: string;
+  qtdPosts: string;
+};
+
 const UserProfile = () => {
   // states
-  const [hideOptions, setHideOptions] = useState("hidden");
-  const [hideEdit, setHideEdit] = useState("block");
-  const [inputStatus, setInputStatus] = useState(true);
-  const [user, setUser] = useState({});
-  const [userHeaderInfo, setUserHeaderInfo] = useState({
+
+  const [user, setUser] = useState<UserProps>({
     nome: "",
     sobrenome: "",
     profissao: "",
-    qtdPosts: 0,
-    profilePicture: "",
+    qtdPosts: "",
   });
+  const [posts, setPosts] = useState<PostProps[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  let userInformation = {};
-  const userRef = React.useRef<HTMLInputElement>(null);
+  const { id } = useAppSelector((state) => state.authReducer.value);
 
   useEffect(() => {
-    apiRoute
-      .get("/user/12345678910")
-      .then((response) => {
-        const { data } = response;
-        const { nome, sobrenome, profissao } = data[0];
+    getUserProfile(id);
+  }, [id]);
 
-        setUser(data[0]);
-        setUserHeaderInfo({
-          nome: nome,
-          sobrenome: sobrenome,
-          profissao: profissao,
-          qtdPosts: 0,
-          profilePicture: "",
-        });
-      })
-      .catch((error) => console.log(error));
-  }, []);
+  const getUserProfile = async (id: string) => {
+    const response = await apiRoute.get(`/user/profile/${id}`);
 
-  const UserDataEntries = Object.entries(user);
+    const { userInfo, userPosts } = response.data;
 
-  const showOptions = () => {
-    if (hideOptions === "hidden") {
-      setHideOptions("block");
-      setHideEdit("hidden");
-    }
+    const qtdPosts = userPosts.length;
+
+    setUser({ ...userInfo[0], qtdPosts });
+    setPosts(userPosts);
+
+    setIsLoading(false);
   };
 
-  const cancelEdit = () => {
-    if (hideOptions === "block") {
-      setHideEdit("block");
-      setHideOptions("hidden");
-      console.log(userRef);
-    }
-  };
-  interface IChangeEvent {
-    event?: React.ChangeEvent<HTMLTextAreaElement>;
-    target: HTMLInputElement;
-  }
-
+  const handleTeste = () => console.log(posts);
   return (
-    <div className="w-full h-full flex flex-col items-center p-6 overflow-y-auto bg-woodsmoke-950">
-      {/* Profile pictture and total amount of posts */}
-      <div className="w-full flex flex-row p-10 items-center justify-around">
-        <div className="flex flex-col items-center">
-          {/* Profile picture */}
-          <div className="w-[200px] h-[200px] bg-green-haze-500 rounded-full mb-2"></div>
-          {/* Professional role */}
-          <div className="w-auto h-auto p-1 text-md text-white text-center tracking-wider">
-            <p className="flex flex-row gap-3 items-center">
-              <span>{userHeaderInfo.nome}</span>
-              <span>{userHeaderInfo.sobrenome}</span>
-            </p>
-            <p>{userHeaderInfo.profissao}</p>
-          </div>
-        </div>
-        {/* Total Amount of posts */}
-        <div className="w-auto h-auto flex flex-col items-center justify-center gap-4 text-white">
-          <h1 className="text-6xl font-bold">0</h1>
-          <p className="text-xl">Posts</p>
-        </div>
-      </div>
-      <div className="w-full h-auto flex px-5 flex-row items-center gap-5 justify-end">
-        <Button
-          label="Editar"
-          variant="secondary"
-          classname={hideEdit}
-          onclick={showOptions}
-        />
-        <Button
-          label="Confirmar"
-          variant="secondary"
-          classname={hideOptions}
-          onclick={() => ""}
-        />
-        <Button
-          label="Cancelar"
-          variant="secondary"
-          classname={hideOptions}
-          onclick={cancelEdit}
-        />
-      </div>
-      {/* Render the inputs based on user information */}
-      <div className="w-full">
-        <form className="w-full h-auto grid grid-cols-2 grid-rows-3 gap-7 p-6">
-          {hideOptions === "hidden"
-            ? UserDataEntries.map(([field, userinfo], index) => (
-                <input
-                  className="input"
-                  key={index}
-                  // label={field}
-                  name={field}
-                  type={field === "senha" ? "password" : "text"}
-                  placeholder={field === "senha" ? "" : `${userinfo}`}
-                  disabled
-                  autoComplete="off"
-
-                  // value={`${userinfo}`}
-                />
-              ))
-            : UserDataEntries.map(([field, userinfo], index) => (
-                <input
-                  className="input"
-                  key={index}
-                  name={field}
-                  type={field === "senha" ? "password" : "text"}
-                  ref={userRef}
-                  // value={`${userinfo}`}
-                />
-              ))}
-          {/* {UserDataEntries.map(([field, userinfo], index) => (
-            <Input
-              key={index}
-              label={field}
-              name={field}
-              type={field === "senha" ? "password" : "text"}
-              placeholder={field === "senha" ? "" : `${userinfo}`}
-              disabled={inputStatus}
-              // value={`${userinfo}`}
+    <div className="w-full h-full flex flex-col items-center px-6 py-10 overflow-y-auto bg-woodsmoke-950">
+      {isLoading ? (
+        <>
+          <div className="h-screen w-full flex items-center justify-center">
+            <AiOutlineLoading
+              size={40}
+              className=" text-green-haze-500 animate-spin"
             />
-          ))} */}
-        </form>
-      </div>
+          </div>
+        </>
+      ) : (
+        <>
+          {/* HEADERS */}
+          <div className="w-full flex flex-row h-auto  items-center justify-center gap-12 py-5 px-4">
+            <div className="rounded-full flex items-center justify-center w-44 h-44 bg-green-haze-500 ring-2 ring-green-haze-500">
+              <Image
+                className="w-full h-full rounded-full object-cover"
+                alt="profile pic"
+                width={30}
+                height={30}
+                src="/profile-pic2.jpg"
+                unoptimized
+              />
+            </div>
+            <div className="flex flex-row w-auto h-full px-2 justify-center">
+              <div className="w-auto flex flex-col items-center gap-4 text-white">
+                {user && (
+                  <>
+                    <h1 className="font-medium text-2xl ">{`${user.nome} ${user.sobrenome}`}</h1>
+                    <span>{user.profissao}</span>
+                    <span>{`${user.qtdPosts} Posts`}</span>
+                  </>
+                )}
+
+                <Link
+                  className="border border-green-haze-500 px-4 py-2 rounded-md hover:bg-green-haze-500 transition-all"
+                  href="/"
+                >
+                  Editar Perfil
+                </Link>
+                <button onClick={handleTeste}>teste</button>
+              </div>
+            </div>
+          </div>
+          {/* POSTS */}
+          <div className="w-full h-full flex flex-col gap-4 px-6 py-10">
+            <PostContainer posts={posts} />
+          </div>
+        </>
+      )}
     </div>
   );
 };

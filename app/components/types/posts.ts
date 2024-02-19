@@ -1,12 +1,11 @@
 export type PostProps = {
-    id: string;
+    content: string;
     creatorid: string;
     creatorname: string;
-    title: string;
-    content: string;
     date: string;
-    
-}
+    id: string;
+    title: string;
+  };
 
 export type PostsParamsProps = {
     post:PostProps

@@ -39,7 +39,7 @@ const Navbar = () => {
         </h1>
       </div>
       {/* Options container */}
-      <div className="w-full h-full py-14 flex flex-col items-center  gap-3 justify-start ">
+      <div className="w-full h-full py-14 font-medium flex flex-col items-center  gap-3 justify-start ">
         {isAuth ? (
           <>
             <NavItem href="/">
@@ -50,11 +50,6 @@ const Navbar = () => {
             <NavItem href="/">
               <FaSquarePlus />
               New Post
-            </NavItem>
-
-            <NavItem href="/MyPosts">
-              <FaCommentAlt />
-              My Posts
             </NavItem>
 
             <NavItem href="/UserProfile">
