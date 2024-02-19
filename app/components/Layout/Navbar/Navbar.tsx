@@ -27,12 +27,12 @@ const Navbar = () => {
 
   return (
     <nav
-      className="w-[20%] py-3 px-2
-      border-r items-center
-     border-green-haze-500 bg-woodsmoke-950 h-screen flex  flex-col"
+      className=" w-full border border-green-haze-500 bottom-0 fixed h-14 md:w-[20%] md:py-3 md:px-2
+      md:border-r md:items-center
+     md:border-green-haze-500 md:bg-woodsmoke-950 md:h-screen md:flex  md:flex-col"
     >
       {/* Logo container */}
-      <div className="flex  flex-row items-center gap-3">
+      <div className=" hidden md:flex  md:flex-row md:items-center md:gap-3">
         <Image src="/wifi-icon.svg" alt="wifi icon" height={30} width={30} />
         <h1 className="text-white font-bold text-2xl">
           Tech<span className="text-green-haze-500">Stack</span>
