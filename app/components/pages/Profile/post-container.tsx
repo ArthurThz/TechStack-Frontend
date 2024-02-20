@@ -9,7 +9,7 @@ type IPostProps = {
 
 const PostContainer = ({ posts }: IPostProps) => {
   return (
-    <div className="w-full h-full flex flex-col py-5 px-6 gap-4 items-center rounded-md transition-all">
+    <div className="w-full h-auto flex  flex-col py-5 md:px-6 gap-4 items-center rounded-md transition-all">
       {posts.length > 0 ? (
         posts.map((post: PostProps) => {
           const { content, creatorid, creatorname, date, id, title } = post;

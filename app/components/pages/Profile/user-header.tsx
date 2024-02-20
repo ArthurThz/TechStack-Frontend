@@ -11,12 +11,12 @@ type UserProps = {
 
 const UserHeader = ({ user }: UserProps) => {
   return (
-    <>
+    <div className="flex flex-row items-center gap-10">
       <div className="rounded-full flex items-center justify-center w-44 h-44 bg-green-haze-500 ring-2 ring-green-haze-500">
         <Image
           className="w-full h-full rounded-full object-cover"
           alt="profile pic"
-          width={30}
+          width={36}
           height={30}
           src="/profile-pic2.jpg"
           unoptimized
@@ -40,7 +40,7 @@ const UserHeader = ({ user }: UserProps) => {
           </Link>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

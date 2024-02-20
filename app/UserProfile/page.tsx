@@ -13,6 +13,7 @@ import { PostProps } from "../components/types/posts";
 import PostContainer from "../components/pages/Profile/post-container";
 import { AiOutlineLoading } from "react-icons/ai";
 import UserHeader from "../components/pages/Profile/user-header";
+import EmptyPosts from "../components/pages/Profile/empty-posts";
 
 type UserProps = {
   nome: string;
@@ -53,7 +54,7 @@ const UserProfile = () => {
   };
 
   return (
-    <div className="w-full h-full flex flex-col items-center px-6 py-10 overflow-y-auto bg-woodsmoke-950">
+    <div className="w-full h-full flex flex-col items-center px-2 md:px-6 py-10 overflow-y-auto bg-woodsmoke-950">
       {isLoading ? (
         <>
           <div className="h-screen w-full flex items-center justify-center">
@@ -64,16 +65,11 @@ const UserProfile = () => {
           </div>
         </>
       ) : (
-        <>
-          {/* HEADERS */}
-          <div className="w-full flex flex-row h-auto  items-center justify-center gap-12 py-5 px-4">
-            <UserHeader user={user} />
-          </div>
-          {/* POSTS */}
-          <div className="w-full h-full flex flex-col gap-4 px-6 py-10">
-            <PostContainer posts={posts} />
-          </div>
-        </>
+        <div className="flex flex-col w-full gap-10 items-center">
+          <UserHeader user={user} />
+
+          <PostContainer posts={posts} />
+        </div>
       )}
     </div>
   );

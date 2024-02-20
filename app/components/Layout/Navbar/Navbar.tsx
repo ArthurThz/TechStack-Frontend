@@ -12,6 +12,7 @@ import { FaCommentAlt } from "react-icons/fa";
 import { FaUser } from "react-icons/fa";
 import { FaUserPlus } from "react-icons/fa";
 import { FaWifi } from "react-icons/fa";
+import { IoExit } from "react-icons/io5";
 
 const Navbar = () => {
   const router = useRouter();
@@ -27,9 +28,9 @@ const Navbar = () => {
 
   return (
     <nav
-      className=" w-full border border-green-haze-500 bottom-0 fixed h-14 md:w-[20%] md:py-3 md:px-2
-      md:border-r md:items-center
-     md:border-green-haze-500 md:bg-woodsmoke-950 md:h-screen md:flex  md:flex-col"
+      className=" w-full px-2 flex py-1  bg-woodsmoke-950 bottom-0 items-center justify-center fixed h-auto md:w-[20%] md:py-8
+      md:border-r md:items-center md:static 
+     md:border-r-green-haze-500 md:h-screen md:flex  md:flex-col"
     >
       {/* Logo container */}
       <div className=" hidden md:flex  md:flex-row md:items-center md:gap-3">
@@ -39,47 +40,46 @@ const Navbar = () => {
         </h1>
       </div>
       {/* Options container */}
-      <div className="w-full h-full py-14 font-medium flex flex-col items-center  gap-3 justify-start ">
+      <div className="w-auto min-w-[60%] flex flex-row items-center justify-between md:flex-col md:items-center md:py-16 md:h-full md:justify-start md:gap-5">
         {isAuth ? (
           <>
             <NavItem href="/">
               <FaHome />
-              Home
+              <span>Home</span>
             </NavItem>
 
             <NavItem href="/">
               <FaSquarePlus />
-              New Post
+              <span>New Post</span>
             </NavItem>
 
             <NavItem href="/UserProfile">
               <FaUser />
-              Profile
+              <span>Profile</span>
             </NavItem>
 
             <button
               onClick={handleLogOut}
-              className="w-32 h-auto border border-woodsmoke-900 text-white justify-center p-1  rounded-md flex flex-row items-center gap-4 hover:border-green-haze-500 transition-all delay-100 ease-in-out "
+              className="w-auto text-lg font-sans font-medium flex flex-row items-center px-4 py-2 justify-start gap-3 text-green-haze-400 hover:text-red-700 hover:bg-green-haze-500 rounded-md transition-all [&>span]:hidden md:[&>span]:block md:justify-start md:w-full"
             >
-              Exit
+              <IoExit size={23} />
+              <span>Exit</span>
             </button>
           </>
         ) : (
           <>
-            <div className="h-auto flex flex-col items-center gap-3">
-              <NavItem href="/">
-                <FaHome />
-                Home
-              </NavItem>
-              <NavItem href="/LogIn">
-                <FaWifi />
-                Login
-              </NavItem>
-              <NavItem href="/SignUp">
-                <FaUserPlus />
-                Sign Up
-              </NavItem>
-            </div>
+            <NavItem href="/">
+              <FaHome />
+              <span> Home</span>
+            </NavItem>
+            <NavItem href="/LogIn">
+              <FaWifi />
+              <span>Login</span>
+            </NavItem>
+            <NavItem href="/SignUp">
+              <FaUserPlus />
+              <span>Login</span>
+            </NavItem>
           </>
         )}
       </div>
