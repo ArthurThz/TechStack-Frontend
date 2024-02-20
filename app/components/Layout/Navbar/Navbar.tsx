@@ -16,7 +16,7 @@ import { IoExit } from "react-icons/io5";
 
 const Navbar = () => {
   const router = useRouter();
-
+  const [shouldShowNavbar, setShouldShowNavbar] = useState(false);
   const { isAuth } = useAppSelector((state) => state.authReducer.value);
 
   const dispatch = useDispatch<AppDispatch>();
@@ -28,7 +28,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className=" w-full px-2 flex py-1  bg-woodsmoke-950 bottom-0 items-center justify-center fixed h-auto md:w-[20%] md:py-8
+      className="w-full px-2 flex py-1  bg-woodsmoke-950 bottom-0 items-center justify-center fixed h-auto md:w-[20%] md:py-8
       md:border-r md:items-center md:static 
      md:border-r-green-haze-500 md:h-screen md:flex  md:flex-col"
     >
@@ -48,7 +48,7 @@ const Navbar = () => {
               <span>Home</span>
             </NavItem>
 
-            <NavItem href="/">
+            <NavItem href="/NewPost">
               <FaSquarePlus />
               <span>New Post</span>
             </NavItem>

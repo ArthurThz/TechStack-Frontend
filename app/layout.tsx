@@ -9,6 +9,11 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "TechStack",
   description: "A full stack blog using next js and redux",
+  icons: [
+    {
+      url: "/wifi-icon.svg",
+    },
+  ],
 };
 
 export default function RootLayout({
