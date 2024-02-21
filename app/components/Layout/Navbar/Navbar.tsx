@@ -50,12 +50,12 @@ const Navbar = () => {
 
             <NavItem href="/NewPost">
               <FaSquarePlus />
-              <span>New Post</span>
+              <span>Novo Post</span>
             </NavItem>
 
             <NavItem href="/UserProfile">
               <FaUser />
-              <span>Profile</span>
+              <span>Perfil</span>
             </NavItem>
 
             <button
@@ -78,7 +78,7 @@ const Navbar = () => {
             </NavItem>
             <NavItem href="/SignUp">
               <FaUserPlus />
-              <span>Login</span>
+              <span>Cadastro</span>
             </NavItem>
           </>
         )}

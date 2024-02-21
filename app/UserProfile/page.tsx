@@ -7,10 +7,10 @@ import { apiRoute } from "@/services/api";
 
 import Image from "next/image";
 import Link from "next/link";
-import PostItem from "../components/pages/Profile/post-item";
+import PostItem from "../components/Posts/post-item";
 import { useAppSelector } from "@/redux/store";
 import { PostProps } from "../components/types/posts";
-import PostContainer from "../components/pages/Profile/post-container";
+import PostContainer from "../components/Posts/post-container";
 import { AiOutlineLoading } from "react-icons/ai";
 import UserHeader from "../components/pages/Profile/user-header";
 import EmptyPosts from "../components/pages/Profile/empty-posts";
@@ -34,11 +34,14 @@ const UserProfile = () => {
   const [posts, setPosts] = useState<PostProps[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const { id } = useAppSelector((state) => state.authReducer.value);
+  const { id, isAuth } = useAppSelector((state) => state.authReducer.value);
 
   useEffect(() => {
+    if (!isAuth) {
+      return;
+    }
     getUserProfile(id);
-  }, [id]);
+  }, [id, isAuth]);
 
   const getUserProfile = async (id: string) => {
     const response = await apiRoute.get(`/user/profile/${id}`);
@@ -68,7 +71,7 @@ const UserProfile = () => {
         <div className="flex flex-col w-full gap-10 items-center">
           <UserHeader user={user} />
 
-          <PostContainer posts={posts} />
+          {posts.length > 0 ? <PostContainer posts={posts} /> : <EmptyPosts />}
         </div>
       )}
     </div>
