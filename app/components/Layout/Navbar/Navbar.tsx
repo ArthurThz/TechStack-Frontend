@@ -63,7 +63,7 @@ const Navbar = () => {
               className="w-auto text-lg font-sans font-medium flex flex-row items-center px-4 py-2 justify-start gap-3 text-green-haze-400 hover:text-red-700 hover:bg-green-haze-500 rounded-md transition-all [&>span]:hidden md:[&>span]:block md:justify-start md:w-full"
             >
               <IoExit size={23} />
-              <span>Exit</span>
+              <span>Sair</span>
             </button>
           </>
         ) : (
