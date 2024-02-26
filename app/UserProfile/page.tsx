@@ -9,7 +9,7 @@ import Image from "next/image";
 import Link from "next/link";
 import PostItem from "../components/Posts/post-item";
 import { useAppSelector } from "@/redux/store";
-import { PostProps } from "../components/types/posts";
+import { PostProps } from "../types/posts";
 import PostContainer from "../components/Posts/post-container";
 import { AiOutlineLoading } from "react-icons/ai";
 import UserHeader from "../components/pages/Profile/user-header";
@@ -51,7 +51,7 @@ const UserProfile = () => {
     const qtdPosts = userPosts.length;
 
     setUser({ ...userInfo[0], qtdPosts });
-    setPosts(userPosts);
+    setPosts(userPosts.reverse());
 
     setIsLoading(false);
   };

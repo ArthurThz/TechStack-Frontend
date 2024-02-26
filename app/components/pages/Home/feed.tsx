@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import PostContainer from "../../Posts/post-container";
-import { PostProps } from "../../types/posts";
+import { PostProps } from "../../../types/posts";
 
 import { useState, useEffect } from "react";
 import { useAppSelector } from "@/redux/store";

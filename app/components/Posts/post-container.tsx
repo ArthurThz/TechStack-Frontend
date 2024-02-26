@@ -1,5 +1,5 @@
 import PostItem from "./post-item";
-import { PostProps } from "../types/posts";
+import { PostProps } from "../../types/posts";
 import EmptyPosts from "../pages/Profile/empty-posts";
 
 type IPostProps = {

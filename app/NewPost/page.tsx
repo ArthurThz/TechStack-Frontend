@@ -53,8 +53,11 @@ const NewPost = () => {
       </div>
 
       <Dialog.Portal>
-        <Dialog.Overlay className="inset-0 fixed bg-black-/90 ring-2 w-full h-full" />
-        <Dialog.Content className="inset-0 md:inset-auto rounded-sm overflow-hidden absolute md:left-1/2 md:top-1/2 md:-translate-x-[19rem] md:-translate-y-1/2 md:max-w-[60%] w-full md:h-[90vh] bg-zinc-900 ring-2 ring-green-haze-500 md:rounded-md flex flex-col outline-none">
+        <Dialog.Overlay className="z-20 inset-0 fixed bg-black-/90 ring-2 w-full h-full" />
+        <Dialog.Content className="z-20 inset-0 md:inset-auto rounded-sm overflow-hidden absolute md:left-1/2 md:top-1/2 md:-translate-x-[19rem] md:-translate-y-1/2 md:max-w-[60%] w-full md:h-[90vh] bg-zinc-900 ring-2 ring-green-haze-500 md:rounded-md flex flex-col outline-none">
+          <h2 className="text-green-haze-500 font-medium text-2xl m-auto py-2">
+            Nova Publicação
+          </h2>
           <Dialog.Close className="absolute rounded-sm outline-none right-0 top-0  text-green-haze-500 font-bold px-6 py-4">
             X
           </Dialog.Close>
@@ -66,12 +69,12 @@ const NewPost = () => {
             >
               <input
                 type="text"
-                className="outline-none p-2 border-b text-zinc-100 border-green-haze-500 bg-transparent w-full"
+                className="outline-none px-10 md:p-2 py-3 border-b text-zinc-100 border-green-haze-500 bg-transparent w-full"
                 placeholder="Título"
                 {...register("title")}
               />
               <textarea
-                className="resize-none h-[300px] w-full p-2 bg-transparent outline-none text-zinc-100"
+                className="resize-none h-[300px] w-full  px-10 py-3 md:p-2 bg-transparent outline-none text-zinc-100"
                 placeholder="Seu Texto Aqui ..."
                 {...register("content")}
               />
