@@ -8,7 +8,3 @@ export type PostProps = {
     role:string
   };
 
-export type PostsParamsProps = {
-    post:PostProps
-    onPostDeleted?: (id:string) => void
-}

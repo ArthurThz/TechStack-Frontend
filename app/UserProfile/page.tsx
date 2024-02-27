@@ -57,6 +57,22 @@ const UserProfile = () => {
     setIsLoading(false);
   };
 
+  const handleOnDeletePost = async (id: string) => {
+    const response = await apiRoute.delete(`/post/${id}`);
+
+    const { status } = response;
+
+    if (status != 204) {
+      alert("Não foi possivel excluir a publicação, tente novamente!");
+      return;
+    }
+
+    const postsArray = posts.filter((item) => {
+      return item.id !== id;
+    });
+
+    setPosts(postsArray);
+  };
   return (
     <div className="w-full h-full flex flex-col items-center px-2 md:px-6 py-10 overflow-y-auto bg-woodsmoke-950">
       {isLoading ? (
@@ -74,7 +90,14 @@ const UserProfile = () => {
 
           {posts.length > 0 ? (
             posts.map((post) => {
-              return <PostItem key={post.id} {...post} type="user" />;
+              return (
+                <PostItem
+                  key={post.id}
+                  post={post}
+                  type="user"
+                  onNoteDeleted={handleOnDeletePost}
+                />
+              );
             })
           ) : (
             <EmptyPosts />
