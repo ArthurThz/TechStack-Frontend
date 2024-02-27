@@ -50,6 +50,7 @@ const UserProfile = () => {
 
     const qtdPosts = userPosts.length;
 
+    console.log(userPosts);
     setUser({ ...userInfo[0], qtdPosts });
     setPosts(userPosts.reverse());
 
@@ -68,10 +69,16 @@ const UserProfile = () => {
           </div>
         </>
       ) : (
-        <div className="flex flex-col w-full gap-10 items-center">
+        <div className="flex flex-col w-full gap-10 items-center py-10 oveflow-y-auto">
           <UserHeader user={user} />
 
-          {posts.length > 0 ? <PostContainer posts={posts} /> : <EmptyPosts />}
+          {posts.length > 0 ? (
+            posts.map((post) => {
+              return <PostItem key={post.id} {...post} type="user" />;
+            })
+          ) : (
+            <EmptyPosts />
+          )}
         </div>
       )}
     </div>

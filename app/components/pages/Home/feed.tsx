@@ -41,7 +41,7 @@ const Feed = () => {
         </>
       ) : (
         <div className="flex flex-col w-full gap-10 items-center">
-          <PostContainer posts={posts} />
+          <PostContainer posts={posts} type="feed" />
         </div>
       )}
     </div>

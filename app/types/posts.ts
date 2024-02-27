@@ -5,6 +5,7 @@ export type PostProps = {
     date: string;
     id: string;
     title: string;
+    role:string
   };
 
 export type PostsParamsProps = {
