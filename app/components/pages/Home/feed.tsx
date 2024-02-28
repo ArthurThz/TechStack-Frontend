@@ -1,12 +1,12 @@
 "use client";
 import React from "react";
-import PostContainer from "../../Posts/post-container";
 import { PostProps } from "../../../types/posts";
 
 import { useState, useEffect } from "react";
 import { useAppSelector } from "@/redux/store";
 import { apiRoute } from "@/services/api";
 import { AiOutlineLoading } from "react-icons/ai";
+import PostItem from "../../Posts/post-item";
 
 const Feed = () => {
   const { isAuth } = useAppSelector((state) => state.authReducer.value);
@@ -19,7 +19,7 @@ const Feed = () => {
     fetchPosts();
   }, [isAuth]);
   const [isLoading, setIsLoading] = useState(true);
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState<PostProps[]>([]);
 
   const fetchPosts = async () => {
     const response = await apiRoute.get("/posts/general");
@@ -41,7 +41,9 @@ const Feed = () => {
         </>
       ) : (
         <div className="flex flex-col w-full gap-10 items-center">
-          <PostContainer posts={posts} type="feed" />
+          {posts.map((post) => {
+            return <PostItem post={post} key={post.id} type="feed" />;
+          })}
         </div>
       )}
     </div>

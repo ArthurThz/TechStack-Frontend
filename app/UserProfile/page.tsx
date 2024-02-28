@@ -10,10 +10,10 @@ import Link from "next/link";
 import PostItem from "../components/Posts/post-item";
 import { useAppSelector } from "@/redux/store";
 import { PostProps } from "../types/posts";
-import PostContainer from "../components/Posts/post-container";
 import { AiOutlineLoading } from "react-icons/ai";
 import UserHeader from "../components/pages/Profile/user-header";
 import EmptyPosts from "../components/pages/Profile/empty-posts";
+import { toast } from "sonner";
 
 type UserProps = {
   nome: string;
@@ -50,7 +50,6 @@ const UserProfile = () => {
 
     const qtdPosts = userPosts.length;
 
-    console.log(userPosts);
     setUser({ ...userInfo[0], qtdPosts });
     setPosts(userPosts.reverse());
 
@@ -69,6 +68,10 @@ const UserProfile = () => {
 
     const postsArray = posts.filter((item) => {
       return item.id !== id;
+    });
+
+    toast.success("Post deletado com sucesso!", {
+      position: "bottom-left",
     });
 
     setPosts(postsArray);

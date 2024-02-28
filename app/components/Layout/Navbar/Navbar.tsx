@@ -28,7 +28,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className="w-full px-2 flex py-1 z-10 bg-woodsmoke-950 bottom-0 items-center justify-center fixed h-auto md:w-[20%] md:py-8
+      className="w-full bg-woodsmoke-950/90  px-2 flex py-1 z-10 md:bg-woodsmoke-950 bottom-0 items-center justify-center fixed h-auto md:w-[20%] md:py-8
       md:border-r md:items-center md:static 
      md:border-r-green-haze-500 md:h-screen md:flex  md:flex-col"
     >
