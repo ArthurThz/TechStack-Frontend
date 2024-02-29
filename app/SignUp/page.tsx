@@ -7,6 +7,7 @@ import type { FieldValues } from "react-hook-form";
 
 import Button from "../components/Layout/Button/Button";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 const SignUp = () => {
   const router = useRouter();
@@ -20,19 +21,17 @@ const SignUp = () => {
   } = useForm();
 
   const onSubmit = async (data: FieldValues) => {
-    apiRoute
-      .post("/user", data)
-      .then(() => {
-        alert("Usuário cadastrado com sucesso!");
-        reset();
-        router.push("/");
-      })
-      .catch((error) => {
-        const errorMessage = error.response.data.errorMessage;
+    console.log(data);
+    const response = await apiRoute.post("/users/register", data);
 
-        alert(errorMessage);
-        return;
-      });
+    if (response.status !== 201) {
+      toast.error("Não foi possivel fazer o cadastro!");
+      return;
+    }
+
+    toast.success("Usuário criado com sucesso!");
+    reset();
+    router.push("/LogIn");
   };
   return (
     <div className="w-full min-h-screen flex flex-col items-center justify-center p-10 bg-woodsmoke-950 overflow-y-auto">

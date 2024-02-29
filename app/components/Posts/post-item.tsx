@@ -6,6 +6,8 @@ import * as Dialog from "@radix-ui/react-dialog";
 import Image from "next/image";
 import type { FieldValues } from "react-hook-form";
 import { useForm } from "react-hook-form";
+import { apiRoute } from "@/services/api";
+import { useRouter } from "next/navigation";
 
 type PostItemProps = {
   post: PostProps;
@@ -14,6 +16,7 @@ type PostItemProps = {
 };
 
 const PostItem = ({ post, onNoteDeleted, type }: PostItemProps) => {
+  const router = useRouter();
   const {
     register,
     formState: { isSubmitting },
@@ -25,8 +28,10 @@ const PostItem = ({ post, onNoteDeleted, type }: PostItemProps) => {
     },
   });
 
-  const onSubmit = (data: FieldValues) => {
-    console.log(data);
+  const onSubmit = async (data: FieldValues) => {
+    const response = await apiRoute.put(`/post/${post.id}`, data);
+
+    router.push("/UserProfile");
   };
 
   return (

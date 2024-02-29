@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import type { FieldValues } from "react-hook-form";
 import { apiRoute } from "@/services/api";
 import { useAppSelector } from "@/redux/store";
+import { toast } from "sonner";
 
 const NewPost = () => {
   const { id } = useAppSelector((state) => state.authReducer.value);
@@ -16,12 +17,24 @@ const NewPost = () => {
     reset,
   } = useForm();
 
-  const onSubmit = (data: FieldValues) => {
+  const onSubmit = async (data: FieldValues) => {
     const newPost = {
       ...data,
       id,
     };
-    console.log(newPost);
+
+    const response = await apiRoute.post("/post", newPost);
+
+    if (response.status !== 201) {
+      toast.error("Algo deu errado, tente novamente!", {
+        position: "bottom-left",
+      });
+      return;
+    }
+
+    toast.success("Publicação criada!", {
+      position: "bottom-left",
+    });
     reset();
   };
   return (
