@@ -20,6 +20,7 @@ type UserProps = {
   sobrenome: string;
   profissao: string;
   qtdPosts: string;
+  profilepic: string;
 };
 
 const UserProfile = () => {
@@ -30,6 +31,7 @@ const UserProfile = () => {
     sobrenome: "",
     profissao: "",
     qtdPosts: "",
+    profilepic: "",
   });
   const [posts, setPosts] = useState<PostProps[]>([]);
   const [isLoading, setIsLoading] = useState(true);

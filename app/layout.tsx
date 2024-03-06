@@ -24,7 +24,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} flex flex-row h-screen w-full`}>
+      <body
+        className={`${inter.className} flex flex-row h-screen w-full bg-zinc-950`}
+      >
         <ReduxProvider>
           <Toaster richColors />
           <Navbar />

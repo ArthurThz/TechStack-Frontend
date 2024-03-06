@@ -27,7 +27,7 @@ const Welcome = () => {
       <h1 className="text-4xl text-green-haze-500 font-semibold mt-3">
         Seja Bem Vindo!
       </h1>
-      <div className="flex flex-col w-[80%] h-auto items-center text-center justify-center py-8">
+      <div className="flex flex-col w-[50%] h-auto items-center text-center justify-center py-8">
         <h2 className="text-xl text-white">
           TechStack é um blog que aborda diversos assunto da área de técnologia,{" "}
           <Link

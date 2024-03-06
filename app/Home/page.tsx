@@ -2,6 +2,8 @@
 import { useAppSelector } from "@/redux/store";
 import Welcome from "../components/pages/Home/welcome";
 import Feed from "../components/pages/Home/feed";
+import Header from "../components/pages/Home/header";
+import HeroSection from "../components/pages/Home/hero";
 
 const HomePage = () => {
   const { isAuth, nome, profissao, sobrenome, token } = useAppSelector(
@@ -9,8 +11,9 @@ const HomePage = () => {
   );
 
   return (
-    <div className="h-full w-full flex flex-col p-3 bg-woodsmoke-950">
-      {!isAuth ? <Welcome /> : <Feed />}
+    <div className="h-full w-full flex flex-col bg-zinc-900">
+      <Header />
+      <HeroSection />
     </div>
   );
 };

@@ -25,11 +25,11 @@ const Feed = () => {
     const response = await apiRoute.get("/posts/general");
 
     const { data } = response;
-    setPosts(data);
+    setPosts(data.reverse());
     setIsLoading(false);
   };
   return (
-    <div className="w-full h-full flex flex-col items-center px-2 md:px-6 py-10 overflow-y-auto bg-woodsmoke-950">
+    <div className="w-full h-full flex flex-col items-center px-2 md:px-6 py-10 overflow-y-auto bg-zinc-900">
       {isLoading ? (
         <>
           <div className="h-screen w-full flex items-center justify-center">

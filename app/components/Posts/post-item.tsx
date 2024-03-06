@@ -8,7 +8,6 @@ import type { FieldValues } from "react-hook-form";
 import { useForm } from "react-hook-form";
 import { apiRoute } from "@/services/api";
 import { useRouter } from "next/navigation";
-
 type PostItemProps = {
   post: PostProps;
   type: "user" | "feed";
@@ -34,13 +33,15 @@ const PostItem = ({ post, onNoteDeleted, type }: PostItemProps) => {
     router.push("/UserProfile");
   };
 
+  let r = (Math.random() + 1).toString(36).substring(7);
+
   return (
     <Dialog.Root>
       <div className="w-full relative h-auto px-4 py-10 flex flex-col gap-5 items-center border border-green-haze-500 rounded-md">
         <div className="w-full items-start px-4 flex md:flex-row gap-8 md:items-center text-green-haze-500 font-medium">
           <Image
             alt="profile pic"
-            src="/profile-pic2.jpg"
+            src={`https://api.dicebear.com/7.x/thumbs/svg?seed=${r}`}
             width={60}
             height={40}
             unoptimized

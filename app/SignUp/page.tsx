@@ -21,7 +21,6 @@ const SignUp = () => {
   } = useForm();
 
   const onSubmit = async (data: FieldValues) => {
-    console.log(data);
     const response = await apiRoute.post("/users/register", data);
 
     if (response.status !== 201) {

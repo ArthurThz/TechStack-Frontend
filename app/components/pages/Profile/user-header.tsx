@@ -6,6 +6,7 @@ type UserProps = {
     sobrenome: string;
     profissao: string;
     qtdPosts: string;
+    profilepic: string;
   };
 };
 
@@ -18,7 +19,7 @@ const UserHeader = ({ user }: UserProps) => {
           alt="profile pic"
           width={36}
           height={30}
-          src="/profile-pic2.jpg"
+          src={user.profilepic}
           unoptimized
         />
       </div>
