@@ -45,3 +45,8 @@
 .glassmorphism { 
     background: rgb(28, 28, 28,0.9); 
 }
+
+.bg-login-input{
+    background: rgb(55,153,107);
+    background: linear-gradient(61deg, rgba(55,153,107,0.5354516806722689) 0%, rgba(24,24,27,0.8379726890756303) 74%);
+}
