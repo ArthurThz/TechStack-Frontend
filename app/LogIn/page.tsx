@@ -47,41 +47,24 @@ const LogIn = () => {
   };
   return (
     <div className="h-screen w-full py-10 px-4  flex flex-col items-center md:justify-center md:px-10  bg-cover bg-zinc-900 ">
-      <div className="w-full h-full md:max-h-[80%] flex flex-row px-2 items-center justify-center">
-        <div className="hidden md:block w-1/2 h-full">
+      <div className="w-full h-auto md:max-h-[90%] md:h-full md:w-[80%] flex flex-row px-2  items-center justify-center rounded-md ring-1 ring-green-haze-500 shadow-lg shadow-green-haze-500 mt-20 md:mt-5 py-10 md:py-5">
+        <div className="hidden md:block w-1/2 h-full bg-login bg-no-repeat bg-center" />
+        <div className="w-full border-l border-green-haze-500/10 py-4 md:w-1/2 h-full flex flex-col items-center  gap-4 justify-center  ">
           <Image
-            src="/gray-wallpaper.jpg"
-            width={100}
-            height={100}
-            alt="code banner"
-          />
-        </div>
-        <div className="w-full py-4 md:w-1/2 h-full flex flex-col items-center gap-4 rounded-md shadow-lg shadow-green-haze-500 ring-1 ring-green-haze-500">
-          <div className="w-full h-auto px-5 py-2  flex flex-row gap-2 items-center mb-10">
-            <Image
-              src="/wifi-icon.svg"
-              width={30}
-              height={30}
-              alt="wifi icon"
-            />
-            <h1 className="text-white font-bold ">
-              Tech<span className="text-green-haze-500">Stack</span>
-            </h1>
-          </div>
-          <Image
+            className="md:hidden"
             src="/login-icon.svg"
             height={80}
             width={200}
             alt="login icon"
           />
-          <h2 className="text-white text-2xl tracking-widest font-medium">
+          <h2 className="text-white text-2xl tracking-widest font-medium mt-5">
             Bem vindo de volta!
           </h2>
-          <form className="w-full h-full flex flex-col px-10 items-center gap-4">
+          <form className="w-full md:w-[70%] justify-center h-full flex flex-col px-10 items-center gap-4 ">
             <div className="flex flex-col items-start gap-2 w-full">
               <label
                 htmlFor="email"
-                className="text-sm font-medium text-green-haze-500"
+                className="text-sm font-medium text-white tracking-widest"
               >
                 Email
               </label>
@@ -94,7 +77,7 @@ const LogIn = () => {
             <div className="flex flex-col items-start gap-2 w-full">
               <label
                 htmlFor="password"
-                className="text-sm font-medium text-green-haze-500"
+                className="text-sm font-medium text-white tracking-widest"
               >
                 Senha
               </label>

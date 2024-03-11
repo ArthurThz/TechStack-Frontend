@@ -12,7 +12,6 @@ const HomePage = () => {
 
   return (
     <div className="h-full w-full flex flex-col bg-zinc-900">
-      <Header />
       <HeroSection />
     </div>
   );
