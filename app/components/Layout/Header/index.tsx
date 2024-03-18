@@ -15,7 +15,10 @@ const Header = () => {
         </>
       ) : (
         <header className="absolute px-4 md:px-10 py-5 h-auto w-full top-0 right-0 left-0 flex flex-row items-center justify-between bg-transparent">
-          <div className="flex gap-4 flex-row items-center px-1 mb-auto md:px-5 justify-center">
+          <Link
+            href="/"
+            className="flex gap-4 flex-row items-center px-1 mb-auto md:px-5 justify-center"
+          >
             <Image
               src="/wifi-icon.svg"
               width={30}
@@ -25,7 +28,7 @@ const Header = () => {
             <h1 className="text-white  text-xl md:text-2xl font-bold">
               Tech<span className="text-green-haze-500">Stack</span>
             </h1>
-          </div>
+          </Link>
           <div>
             <Link
               href="/LogIn"

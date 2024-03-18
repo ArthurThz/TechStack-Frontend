@@ -1,12 +1,11 @@
 "use client";
 import React from "react";
-import { PostProps } from "../../../types/posts";
-
+import { PostProps } from "../types/posts";
 import { useState, useEffect } from "react";
 import { useAppSelector } from "@/redux/store";
 import { apiRoute } from "@/services/api";
 import { AiOutlineLoading } from "react-icons/ai";
-import PostItem from "../../Posts/post-item";
+import PostItem from "../components/Posts/post-item";
 
 const Feed = () => {
   const { isAuth } = useAppSelector((state) => state.authReducer.value);

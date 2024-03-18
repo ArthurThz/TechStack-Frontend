@@ -40,14 +40,14 @@ const LogIn = () => {
 
       dispatch(logIn(userData));
 
-      router.push("/");
+      router.push("/Feed");
     } catch (err) {
       console.error(err);
     }
   };
   return (
-    <div className="h-screen w-full py-10 px-4  flex flex-col items-center md:justify-center md:px-10  bg-cover bg-zinc-900 ">
-      <div className="w-full h-auto md:max-h-[90%] md:h-full md:w-[80%] flex flex-row px-2  items-center justify-center rounded-md ring-1 ring-green-haze-500 shadow-lg shadow-green-haze-500 mt-20 md:mt-5 py-10 md:py-5">
+    <div className="min-h-screen w-full py-10 px-4  flex flex-col items-center md:justify-center md:px-10  bg-cover bg-zinc-900 ">
+      <div className="w-full h-auto bg-zinc-950/20 md:max-h-[90%] md:h-full md:w-[80%] flex flex-row px-2  items-center justify-center rounded-md ring-1 ring-green-haze-500 shadow-lg shadow-green-haze-500 mt-10 md:mt-5 py-10 md:py-5">
         <div className="hidden md:block w-1/2 h-full bg-login bg-no-repeat bg-center" />
         <div className="w-full border-l border-green-haze-500/10 py-4 md:w-1/2 h-full flex flex-col items-center  gap-4 justify-center  ">
           <Image
@@ -60,7 +60,10 @@ const LogIn = () => {
           <h2 className="text-white text-2xl tracking-widest font-medium mt-5">
             Bem vindo de volta!
           </h2>
-          <form className="w-full md:w-[70%] justify-center h-full flex flex-col px-10 items-center gap-4 ">
+          <form
+            className="w-full md:w-[70%] justify-center h-full flex flex-col px-10 items-center gap-4 "
+            onSubmit={handleSubmit(onSubmit)}
+          >
             <div className="flex flex-col items-start gap-2 w-full">
               <label
                 htmlFor="email"
@@ -97,7 +100,7 @@ const LogIn = () => {
               Ainda não tem uma conta?{" "}
               <Link
                 href="/SignUp"
-                className="text-green-haze-500 font-medium text-md"
+                className="text-green-haze-500 font-medium text-md underline"
               >
                 cadastre-se
               </Link>

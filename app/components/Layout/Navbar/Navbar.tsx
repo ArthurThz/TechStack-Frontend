@@ -49,7 +49,7 @@ const Navbar = () => {
           <div className="w-auto min-w-[60%] flex flex-row items-center justify-between md:flex-col md:items-center md:py-16 md:h-full md:justify-start md:gap-5">
             {isAuth ? (
               <>
-                <NavItem href="/">
+                <NavItem href="/Feed">
                   <FaHome />
                   <span>Home</span>
                 </NavItem>
