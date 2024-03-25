@@ -3,12 +3,19 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Layout/Navbar/Navbar";
 import ReduxProvider from "@/redux/provider";
+import { Toaster } from "sonner";
+import Header from "./components/Layout/Header";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "TechStack",
   description: "A full stack blog using next js and redux",
+  icons: [
+    {
+      url: "/wifi-icon.svg",
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -18,9 +25,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} flex flex-row h-screen w-full`}>
+      <body
+        className={`${inter.className} flex flex-row h-screen w-full bg-zinc-950`}
+      >
         <ReduxProvider>
-          <Navbar />
+          <Toaster richColors />
+          <Header />
           {children}
         </ReduxProvider>
       </body>

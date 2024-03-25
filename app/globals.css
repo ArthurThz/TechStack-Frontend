@@ -45,3 +45,10 @@
 .glassmorphism { 
     background: rgb(28, 28, 28,0.9); 
 }
+
+
+
+.bg-login{
+    background-image:url("../public/login-icon.svg");
+    background-size: 80% 80%;
+}
