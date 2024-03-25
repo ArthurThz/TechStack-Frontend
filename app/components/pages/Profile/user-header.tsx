@@ -3,7 +3,6 @@ import Link from "next/link";
 type UserProps = {
   user: {
     nome: string;
-    sobrenome: string;
     profissao: string;
     qtdPosts: string;
     profilepic: string;
@@ -27,7 +26,7 @@ const UserHeader = ({ user }: UserProps) => {
         <div className="w-auto flex flex-col items-start gap-4 text-white">
           {user && (
             <>
-              <h1 className="font-medium text-2xl ">{`${user.nome} ${user.sobrenome}`}</h1>
+              <h1 className="font-medium text-2xl ">{`${user.nome}`}</h1>
               <span>{user.profissao}</span>
               <span>{`${user.qtdPosts} Posts`}</span>
             </>

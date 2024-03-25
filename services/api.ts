@@ -6,3 +6,10 @@ export const apiRoute = axios.create({
     "Content-Type": "application/json",
   },
 });
+
+export const gitHubApi = axios.create({
+  baseURL:"https://api.github.com/users",
+  headers:{
+    "Content-Type":"application/json"
+  }
+})

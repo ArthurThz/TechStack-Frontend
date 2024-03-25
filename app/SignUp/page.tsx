@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { apiRoute } from "../../services/api";
+import { apiRoute, gitHubApi } from "../../services/api";
 
 import type { FieldValues } from "react-hook-form";
 
@@ -21,20 +21,28 @@ const SignUp = () => {
     getValues,
   } = useForm();
 
-  const onSubmit = async (data: FieldValues) => {
-    const response = await apiRoute.post("/users/register", data);
+  const onSubmit = async (userdata: FieldValues) => {
+    // const response = await apiRoute.post("/users/register", data);
+    // if (response.status !== 201) {
+    //   toast.error("Não foi possivel fazer o cadastro!");
+    //   return;
+    // }
+    // toast.success("Usuário criado com sucesso!");
+    // reset();
+    // router.push("/LogIn");
 
-    if (response.status !== 201) {
-      toast.error("Não foi possivel fazer o cadastro!");
-      return;
-    }
+    const githubInfo = await gitHubApi.get(`${userdata.github}`);
+    console.log(githubInfo);
 
-    toast.success("Usuário criado com sucesso!");
-    reset();
-    router.push("/LogIn");
+    const linkProfilePic = githubInfo.data.avatar_url;
+    const profilePic = { profilePic: linkProfilePic };
+
+    const user = { ...userdata, ...profilePic };
+
+    console.log(user);
   };
   return (
-    <div className="w-full min-h-screen flex flex-col items-center px-8 bg-zinc-900 overflow-y-auto">
+    <div className="w-full min-h-screen ring-2 flex flex-col items-center px-8 bg-zinc-900 overflow-y-auto">
       <div className="h-full w-full mt-24 flex flex-col md:flex-row items-center md:justify-center gap-20">
         <Image
           className="hidden md:block "
@@ -43,8 +51,8 @@ const SignUp = () => {
           height={40}
           alt="icon"
         />
-        <div className="flex flex-col items-center">
-          <h1 className="text-green-haze-500 font-bold text-3xl mb-4">
+        <div className="flex flex-col md:-mt-5 items-center">
+          <h1 className="text-green-haze-500 font-bold text-3xl mb-2">
             Cadastre-se
           </h1>
           <h3 className="text-white text-md py-5 font-medium">
@@ -97,6 +105,20 @@ const SignUp = () => {
                   />
                   {errors.profissao && (
                     <p className="text-red-600">{`${errors.profissao.message}`}</p>
+                  )}
+                </div>
+
+                <div className=" w-full max-w-[300px] flex flex-col gap-2">
+                  <input
+                    type="text"
+                    placeholder="Github User *"
+                    {...register("github", {
+                      required: "Campo obrigatório, por favor preencha!",
+                    })}
+                    className="bg-transparent h-10 w-full ring-1 rounded-md ring-zinc-400/50  outline-none text-white font-md px-2  focus:ring-green-haze-500 focus:shadow-md focus:shadow-green-haze-400"
+                  />
+                  {errors.github && (
+                    <p className="text-red-600">{`${errors.github.message}`}</p>
                   )}
                 </div>
 

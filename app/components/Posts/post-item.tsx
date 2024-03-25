@@ -33,19 +33,17 @@ const PostItem = ({ post, onNoteDeleted, type }: PostItemProps) => {
     router.push("/UserProfile");
   };
 
-  let r = (Math.random() + 1).toString(36).substring(7);
-
   return (
     <Dialog.Root>
       <div className="w-full relative h-auto px-4 py-10 flex flex-col gap-5 items-center border border-green-haze-500 rounded-md">
         <div className="w-full items-start px-4 flex md:flex-row gap-8 md:items-center text-green-haze-500 font-medium">
           <Image
             alt="profile pic"
-            src={`https://api.dicebear.com/7.x/thumbs/svg?seed=${r}`}
+            src={`${post.profilepic}`}
             width={60}
             height={40}
             unoptimized
-            className="rounded-full"
+            className="rounded-full ring-2 ring-green-haze-500"
           />
           <div className="flex flex-col gap-2 items-start">
             <p className="text-green-haze-300 text-lg">{post.creatorname}</p>

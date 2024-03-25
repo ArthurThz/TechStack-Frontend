@@ -17,9 +17,8 @@ import { toast } from "sonner";
 
 type UserProps = {
   nome: string;
-  sobrenome: string;
-  profissao: string;
   qtdPosts: string;
+  profissao: string;
   profilepic: string;
 };
 
@@ -28,9 +27,8 @@ const UserProfile = () => {
 
   const [user, setUser] = useState<UserProps>({
     nome: "",
-    sobrenome: "",
-    profissao: "",
     qtdPosts: "",
+    profissao: "",
     profilepic: "",
   });
   const [posts, setPosts] = useState<PostProps[]>([]);
