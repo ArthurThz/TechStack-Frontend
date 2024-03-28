@@ -25,7 +25,7 @@ const SignUp = () => {
     const githubInfo = await gitHubApi.get(`${userdata.github}`);
 
     const linkProfilePic = githubInfo.data.avatar_url;
-    const profilePic = { profilePic: linkProfilePic };
+    const profilePic = { profilepic: linkProfilePic };
 
     const user = { ...userdata, ...profilePic };
 
@@ -39,8 +39,6 @@ const SignUp = () => {
     toast.success("Usuário criado com sucesso!");
     reset();
     router.push("/LogIn");
-
-    console.log(user);
   };
   return (
     <div className="w-full min-h-screen ring-2 flex flex-col items-center px-8 bg-zinc-900 overflow-y-auto">
