@@ -39,19 +39,19 @@ const NewPost = () => {
   };
   return (
     <Dialog.Root>
-      <div className="h-full w-full flex flex-col gap-10 items-center p-20 bg-woodsmoke-950 relative">
-        <h1 className="text-4xl text-white font-sans font-medium tracking-wide">
+      <div className="h-full w-full flex flex-col gap-10 items-center p-20 bg-zinc-900 relative">
+        <h1 className="text-3xl md:text-4xl text-white font-sans font-medium tracking-wide">
           Criar novo post
         </h1>
         <div className="w-full gap-10 flex flex-col items-center">
-          <div className="items-center gap-3 justify-center flex flex-row w-full group">
+          <div className="items-center gap-3 justify-center text-center flex flex-col md:flex-row w-full group">
             <Image alt="pilot icon" width={80} height={80} src="/pilot.svg" />
             <h2 className="text-xl text-green-haze-500  group-hover:text-green-haze-200 font-medium font-sans">
               Seja você o piloto da sua aventura no mundo da tecnologia!
             </h2>
           </div>
 
-          <div className="items-center gap-3 justify-center flex flex-row w-full group">
+          <div className="items-center gap-3 justify-center flex flex-col md:flex-row w-full group">
             <Image alt="pilot icon" width={80} height={80} src="/rocket.svg" />
             <h2 className="text-xl text-green-haze-500 text-center group-hover:text-green-haze-200 font-medium font-sans">
               Crie publicações para alcançar o máximo de pessoas e contribuir

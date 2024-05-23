@@ -34,7 +34,7 @@ const UserHeader = ({ user }: UserProps) => {
 
           <Link
             className="border border-green-haze-500 px-4 py-2 rounded-md hover:bg-green-haze-500 transition-all"
-            href="/"
+            href="/EditProfile"
           >
             Editar Perfil
           </Link>
