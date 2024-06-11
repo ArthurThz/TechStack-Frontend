@@ -5,10 +5,10 @@ import { motion } from "framer-motion";
 
 const HeroSection = () => {
   return (
-    <div className="h-full py-10 md:py-0  md:min-h-screen w-full mt-24 md:mt-0 flex flex-col-reverse md:flex-row items-center justify-around gap-10 md:gap-0 bg-zinc-900 ">
+    <motion.div className="h-full py-10 md:py-0 md:min-h-screen w-full mt-24 md:mt-0 flex flex-col-reverse md:flex-row items-center justify-around gap-10 md:gap-0 bg-zinc-900 ">
       <motion.div
         initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
+        animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
         className=" flex h-full flex-col md:max-w-[40%] w-auto px-5 gap-2 items-center justify-center "
       >
@@ -66,7 +66,7 @@ const HeroSection = () => {
       >
         <Image src="/hero-image.svg" alt="banner" width={500} height={400} />
       </motion.div>
-    </div>
+    </motion.div>
   );
 };
 
