@@ -17,7 +17,9 @@ type PostItemProps = {
 const PostItem = ({ post, onNoteDeleted, type }: PostItemProps) => {
   const router = useRouter();
 
-  const redirectToEditPost = (postId: string) => {};
+  const redirectToEditPost = (postId: string) => {
+    router.push(`Posts/${postId}`);
+  };
 
   return (
     <div className="w-full relative h-auto px-4 py-10 flex flex-col gap-5 items-center border border-green-haze-500 rounded-md">
@@ -55,7 +57,10 @@ const PostItem = ({ post, onNoteDeleted, type }: PostItemProps) => {
               onClick={() => (onNoteDeleted ? onNoteDeleted(post.id) : null)}
             />
 
-            <FaPencil className="hover:scale-125 transition-all hover:cursor-pointer" />
+            <FaPencil
+              className="hover:scale-125 transition-all hover:cursor-pointer"
+              onClick={() => redirectToEditPost(post.id)}
+            />
           </div>
         )}
       </div>
