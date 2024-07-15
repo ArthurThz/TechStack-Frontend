@@ -66,19 +66,18 @@ const LogIn = () => {
       : setIsPasswordVisible(defaultPasswordType);
   };
   return (
-    <div className="min-h-screen w-full py-10 px-4 justify-center  flex flex-col items-center md:justify-center md:px-10  bg-cover bg-zinc-900 ">
-      <div className="w-[90%] h-[70%] ring-2 ring-green-haze-500/30 shadow-lg shadow-green-haze-400/30 rounded-md ">
-        <div className="hidden lg:block w-1/2 h-full bg-login bg-no-repeat bg-center" />
-        <div className="w-full border-l border-green-haze-500/10 py-4 h-full flex flex-col items-center  gap-2 justify-center">
-          <div className="hidden md:block relative h-[90%] w-[90%]">
+    <div className="min-h-screen w-full py-10 px-4 justify-center  flex flex-col items-center md:justify-center md:px-10  bg-zinc-900 ">
+      <div className="w-[90%] h-[70%] ring-2 ring-green-haze-500/30 shadow-lg shadow-green-haze-400/30 rounded-md lg:w-[50%] lg:h-[85%] lg:mt-10 ">
+        <div className="w-full border-l border-green-haze-500/10 py-4 h-full flex flex-col items-center  gap-2 justify-center ">
+          <div className="hidden  md:block relative h-[90%] w-[50%] ">
             <Image
-              className=""
+              className="object-cover"
               src="/hands-on-keyboard.svg"
               fill
               alt="login icon"
             />
           </div>
-          <h1 className="text-white text-lg px-2  font-medium mt-6 text-center  md:text-xl md:px-8">
+          <h1 className="text-white text-lg px-4 font-medium mt-6 text-center  md:text-xl md:px-8 lg:text-2xl">
             Compartilhe suas{" "}
             <span className="text-green-haze-500 font-bold">ideias</span> ou
             <span className="text-green-haze-500 font-bold"> experiências</span>
@@ -88,7 +87,7 @@ const LogIn = () => {
             Faça login para continuar
           </span>
           <form
-            className="w-full md:w-[70%]  justify-center h-auto py-10 flex flex-col px-5 items-center gap-4 "
+            className="w-full md:w-[70%]  justify-center h-auto py-10 flex flex-col px-5 items-center gap-4 lg:w-[50%] "
             onSubmit={handleSubmit(onSubmit)}
           >
             <Input label="Email" type="text" icon={<MdEmail />} />
