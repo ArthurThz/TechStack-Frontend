@@ -5,21 +5,16 @@ import Image from "next/image";
 import Button from "../components/Layout/Button/Button";
 import { logIn } from "@/redux/features/auth-slice";
 import { apiRoute } from "@/services/api";
-import { FieldValue, FieldValues, useForm } from "react-hook-form";
+import { FieldValues, useForm } from "react-hook-form";
 
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/redux/store";
 import { useRouter } from "next/navigation";
-import { MdArrowRight, MdEmail } from "react-icons/md";
+import { MdEmail } from "react-icons/md";
 import { FaArrowRight } from "react-icons/fa";
 import Link from "next/link";
 import Input from "../components/Layout/Input";
-import {
-  LiaEye,
-  LiaEyeSlash,
-  LiaEyeSlashSolid,
-  LiaIconsSolid,
-} from "react-icons/lia";
+import { LiaEye, LiaEyeSlash } from "react-icons/lia";
 
 const LogIn = () => {
   // Router
@@ -54,7 +49,7 @@ const LogIn = () => {
       console.error(err);
     }
   };
-  // Password input state
+  // Password Input Handlers
   const defaultPasswordType = {
     type: "password",
     icon: <LiaEyeSlash />,
@@ -75,26 +70,25 @@ const LogIn = () => {
       <div className="w-[90%] h-[70%] ring-2 ring-green-haze-500/30 shadow-lg shadow-green-haze-400/30 rounded-md ">
         <div className="hidden lg:block w-1/2 h-full bg-login bg-no-repeat bg-center" />
         <div className="w-full border-l border-green-haze-500/10 py-4 h-full flex flex-col items-center  gap-2 justify-center">
-          <div className="hidden p-1 text-center md:flex md:flex-col-reverse">
+          <div className="hidden md:block relative h-[90%] w-[90%]">
             <Image
               className=""
-              src="/login-icon.svg"
-              height={90}
-              width={280}
+              src="/hands-on-keyboard.svg"
+              fill
               alt="login icon"
             />
           </div>
-          <h1 className="text-white text-lg font-medium mt-6 text-center ">
+          <h1 className="text-white text-lg px-2  font-medium mt-6 text-center  md:text-xl md:px-8">
             Compartilhe suas{" "}
             <span className="text-green-haze-500 font-bold">ideias</span> ou
             <span className="text-green-haze-500 font-bold"> experiências</span>
             , expanda a comunidade!
           </h1>
-          <span className="text-white font-extralight text-sm">
+          <span className="text-white font-extralight text-xs sm:text-sm">
             Faça login para continuar
           </span>
           <form
-            className="w-full md:w-[70%] justify-center h-full flex flex-col px-5 items-center gap-4 "
+            className="w-full md:w-[70%]  justify-center h-auto py-10 flex flex-col px-5 items-center gap-4 "
             onSubmit={handleSubmit(onSubmit)}
           >
             <Input label="Email" type="text" icon={<MdEmail />} />
