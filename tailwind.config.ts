@@ -45,6 +45,9 @@ const config: Config = {
     'primary-btn':'#37996b'
     
       
+      },
+      screens:{
+        'tablet':'768px'
       }
       
     },
