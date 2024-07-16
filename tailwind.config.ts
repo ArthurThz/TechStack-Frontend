@@ -45,6 +45,10 @@ const config: Config = {
     'primary-btn':'#37996b'
     
       
+      },
+      screens:{
+        'galaxy':'412px',
+        'iphonexr':'493px'
       }
       
     },

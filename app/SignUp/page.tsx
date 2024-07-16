@@ -22,24 +22,23 @@ const SignUp = () => {
   } = useForm();
 
   const onSubmit = async (userdata: FieldValues) => {
-    // const response = await apiRoute.post("/users/register", data);
-    // if (response.status !== 201) {
-    //   toast.error("Não foi possivel fazer o cadastro!");
-    //   return;
-    // }
-    // toast.success("Usuário criado com sucesso!");
-    // reset();
-    // router.push("/LogIn");
-
     const githubInfo = await gitHubApi.get(`${userdata.github}`);
-    console.log(githubInfo);
 
     const linkProfilePic = githubInfo.data.avatar_url;
-    const profilePic = { profilePic: linkProfilePic };
+    const profilePic = { profilepic: linkProfilePic };
 
     const user = { ...userdata, ...profilePic };
 
-    console.log(user);
+    const response = await apiRoute.post("/users/register", user);
+
+    if (response.status !== 201) {
+      toast.error(response.data.message);
+      return;
+    }
+
+    toast.success("Usuário criado com sucesso!");
+    reset();
+    router.push("/LogIn");
   };
   return (
     <div className="w-full min-h-screen ring-2 flex flex-col items-center px-8 bg-zinc-900 overflow-y-auto">

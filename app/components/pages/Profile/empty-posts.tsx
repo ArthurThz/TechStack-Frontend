@@ -3,8 +3,8 @@ import React from "react";
 
 const EmptyPosts = () => {
   return (
-    <div className="flex flex-col gap-5 items-center p-10">
-      <h1 className="text-white text-2xl">
+    <div className="w-full md:w-auto flex flex-col gap-5 items-center p-10">
+      <h1 className="text-white text-2xl text-center">
         Você ainda não possui nenhuma postagem!
       </h1>
       <Link
