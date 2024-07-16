@@ -47,7 +47,8 @@ const config: Config = {
       
       },
       screens:{
-        'tablet':'768px'
+        'galaxy':'412px',
+        'iphonexr':'493px'
       }
       
     },
