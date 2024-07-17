@@ -10,7 +10,7 @@ const HeroSection = () => {
         initial={{ opacity: 0, x: -100 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.4 }}
-        className="flex justify-center w-[250px] galaxy:w-[290px] iphonexr:w-[400px] md:w-[480px] h-auto"
+        className="flex justify-center w-[250px] galaxy:w-[290px] iphonexr:w-[340px] md:w-[480px] h-auto"
       >
         <Image
           src="/hero-image.svg"
@@ -36,7 +36,7 @@ const HeroSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.2, delay: 0.2 }}
-          className="text-green-haze-500 px-2 text-sm md:text-lg text-justify whitespace-pre-line"
+          className="text-green-haze-500 px-2 text-sm md:text-lg text-justify whitespace-pre-line lg:pr-4"
         >
           Publique artigos, dicas ou expêriencias que você deseja compartilhar,
           aqui você poderá encontrar pessoas que estão trilhando o caminho para

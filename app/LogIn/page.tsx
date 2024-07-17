@@ -11,7 +11,7 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/redux/store";
 import { useRouter } from "next/navigation";
 import { MdEmail } from "react-icons/md";
-import { FaArrowRight } from "react-icons/fa";
+import { FaArrowRight, FaEye, FaEyeSlash } from "react-icons/fa";
 import Link from "next/link";
 import Input from "../components/Layout/Input";
 import { LiaEye, LiaEyeSlash } from "react-icons/lia";
@@ -32,6 +32,8 @@ const LogIn = () => {
 
   // Login funtion
   const onSubmit = async (data: FieldValues) => {
+    console.log(data);
+    return;
     try {
       const response = await apiRoute.post("/users/login", data);
 
@@ -52,7 +54,7 @@ const LogIn = () => {
   // Password Input Handlers
   const defaultPasswordType = {
     type: "password",
-    icon: <LiaEyeSlash />,
+    icon: <FaEyeSlash />,
   };
   const [ispasswordVisible, setIsPasswordVisible] =
     useState(defaultPasswordType);
@@ -61,7 +63,7 @@ const LogIn = () => {
     ispasswordVisible.type === "password"
       ? setIsPasswordVisible({
           type: "text",
-          icon: <LiaEye />,
+          icon: <FaEye />,
         })
       : setIsPasswordVisible(defaultPasswordType);
   };
@@ -76,7 +78,7 @@ const LogIn = () => {
             alt="login icon"
           />
         </div>
-        <h1 className="text-white text-lg px-4 font-medium mt-6 text-center  md:text-xl md:px-8 lg:text-2xl">
+        <h1 className="text-white text-lg iphonexr:text-xl px-4 font-medium mt-6 text-center  md:text-xl md:px-8 lg:text-2xl">
           Compartilhe suas{" "}
           <span className="text-green-haze-500 font-bold">ideias</span> ou
           <span className="text-green-haze-500 font-bold"> experiências</span>,
@@ -89,13 +91,19 @@ const LogIn = () => {
           className="w-full md:w-[70%]  justify-center h-auto py-10 flex flex-col px-5 items-center gap-4 lg:w-[50%] "
           onSubmit={handleSubmit(onSubmit)}
         >
-          <Input label="Email" type="text" icon={<MdEmail />} />
+          <Input
+            label="Email"
+            type="text"
+            icon={<MdEmail />}
+            registerName="email"
+          />
           <div className="flex flex-col items-start gap-2 w-full">
             <div className="w-full flex items-center h-auto relative">
               <input
                 className="w-full px-3 py-2 text-sm border-none outline-none focus-within:outline-2 focus-within:outline-green-haze-500  rounded-md bg-zinc-800 h-[40px] placeholder:text-md placeholder:text-zinc-100 text-zinc-100"
                 placeholder="Senha"
                 type={ispasswordVisible.type}
+                {...register("password")}
               />
 
               <div

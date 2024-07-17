@@ -1,7 +1,9 @@
-import { ReactNode } from "react"
+import { InputHTMLAttributes, ReactNode } from "react"
 
-export type IInput = {
+
+export interface IInput extends InputHTMLAttributes<HTMLInputElement>{
     label:string,
     icon?: ReactNode,
-    type:string
+    type:string,
+    registerName:string
 }

@@ -9,6 +9,16 @@ import Button from "../components/Layout/Button/Button";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import Image from "next/image";
+import Input from "../components/Layout/Input";
+import {
+  FaArrowRight,
+  FaGithub,
+  FaLaptopCode,
+  FaLock,
+  FaTools,
+  FaUser,
+} from "react-icons/fa";
+import { IoMail } from "react-icons/io5";
 
 const SignUp = () => {
   const router = useRouter();
@@ -41,31 +51,34 @@ const SignUp = () => {
     router.push("/LogIn");
   };
   return (
-    <div className="w-full min-h-screen ring-2 flex flex-col items-center px-8 bg-zinc-900 overflow-y-auto">
-      <div className="h-full w-full mt-24 flex flex-col md:flex-row items-center md:justify-center gap-20">
+    <div className="w-full  min-h-screen ring-2 flex flex-col items-center justify-center  bg-zinc-900 overflow-y-auto">
+      <div className="w-[85%] lg:w-[50%] md:px-10 md:py-10 h-auto p-5 ring-2  ring-green-haze-500/30 flex flex-col gap-2 items-center rounded-lg shadow-lg shadow-green-haze-400/30">
         <Image
-          className="hidden md:block "
+          className="w-[200px] iphonexr:w-[250px] md:w-[300px] lg:w-[360px] h-auto "
           src="/signup-icon.svg"
           width={500}
           height={40}
           alt="icon"
         />
-        <div className="flex flex-col md:-mt-5 items-center">
-          <h1 className="text-green-haze-500 font-bold text-3xl mb-2">
-            Cadastre-se
-          </h1>
-          <h3 className="text-white text-md py-5 font-medium">
-            Venha fazer parte do nosso time!
-          </h3>
-          <div className="w-full md:w-auto md:px-10 h-auto p-5 ring-1 bg-zinc-950/30 ring-green-haze-500 flex flex-col gap-3 items-center rounded-lg shadow-md shadow-green-haze-500">
-            <form
-              onSubmit={handleSubmit(onSubmit)}
-              className="w-full h-auto p-2 flex flex-col items-center gap-4"
-            >
-              {/* grid wrapper */}
-              <div className="w-full flex flex-col items-center gap-4">
-                {/* input and error message container */}
-                <div className=" w-full max-w-[300px] flex flex-col gap-2">
+        <h1 className="text-white font-medium text-lg  mb-2 text-center md:text-xl lg:text-2xl">
+          <span className="text-green-haze-500 font-bold">Cadastre-se</span> e
+          começe a publicar!
+        </h1>
+        <span className="text-zinc-100 font-light text-xs mt-[-10px] md:text-sm">
+          Venha fazer parte da nossa comunidade!
+        </span>
+
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="w-full h-auto p-2 flex flex-col items-center gap-4 mt-1 md:w-[70%] lg:w-[50%] md:mt-3"
+        >
+          {/* grid wrapper */}
+          <Input label="Nome" type="text" icon={<FaUser />} />
+          <Input label="Email" type="text" icon={<IoMail />} />
+          <Input label="Profissao" type="text" icon={<FaLaptopCode />} />
+          <Input label="Github" type="text" icon={<FaGithub />} />
+          <Input label="Senha" type="text" icon={<FaLock />} />
+          {/* <div className=" w-full max-w-[300px] flex flex-col gap-2">
                   <input
                     type="text"
                     placeholder="Nome *"
@@ -77,97 +90,12 @@ const SignUp = () => {
                   {errors.nome && (
                     <p className="text-red-600">{`${errors.nome.message}`}</p>
                   )}
-                </div>
+                </div> */}
 
-                <div className=" w-full max-w-[300px] flex flex-col gap-2">
-                  <input
-                    type="email"
-                    placeholder="Email *"
-                    {...register("email", {
-                      required: "Campo obrigatório, por favor preencha!",
-                    })}
-                    className="bg-transparent h-10 w-full ring-1 rounded-md ring-zinc-400/50  outline-none text-white font-md px-2  focus:ring-green-haze-500 focus:shadow-md focus:shadow-green-haze-400"
-                  />
-                  {errors.email && (
-                    <p className="text-red-600">{`${errors.email.message}`}</p>
-                  )}
-                </div>
-
-                <div className=" w-full max-w-[300px] flex flex-col gap-2">
-                  <input
-                    type="text"
-                    placeholder="Profissão *"
-                    {...register("profissao", {
-                      required: "Campo obrigatório, por favor preencha!",
-                    })}
-                    className="bg-transparent h-10 w-full ring-1 rounded-md ring-zinc-400/50  outline-none text-white font-md px-2  focus:ring-green-haze-500 focus:shadow-md focus:shadow-green-haze-400"
-                  />
-                  {errors.profissao && (
-                    <p className="text-red-600">{`${errors.profissao.message}`}</p>
-                  )}
-                </div>
-
-                <div className=" w-full max-w-[300px] flex flex-col gap-2">
-                  <input
-                    type="text"
-                    placeholder="Github User *"
-                    {...register("github", {
-                      required: "Campo obrigatório, por favor preencha!",
-                    })}
-                    className="bg-transparent h-10 w-full ring-1 rounded-md ring-zinc-400/50  outline-none text-white font-md px-2  focus:ring-green-haze-500 focus:shadow-md focus:shadow-green-haze-400"
-                  />
-                  {errors.github && (
-                    <p className="text-red-600">{`${errors.github.message}`}</p>
-                  )}
-                </div>
-
-                <div className=" w-full max-w-[300px] flex flex-col gap-2">
-                  <input
-                    type="password"
-                    autoComplete="off"
-                    placeholder="Senha *"
-                    {...register("senha", {
-                      required: "Campo obrigatório, por favor preencha!",
-                      minLength: {
-                        value: 8,
-                        message: "Sua senha deve conter ao menos 8 caracteres!",
-                      },
-                    })}
-                    className="bg-transparent h-10 w-full ring-1 rounded-md ring-zinc-400/50  outline-none text-white font-md px-2  focus:ring-green-haze-500 focus:shadow-md focus:shadow-green-haze-400"
-                  />
-                  {errors.senha && (
-                    <p className="text-red-600">{`${errors.senha.message}`}</p>
-                  )}
-                </div>
-
-                <div className=" w-full max-w-[300px] flex flex-col gap-2">
-                  <input
-                    type="password"
-                    autoComplete="off"
-                    placeholder="Repetir Senha *"
-                    {...register("repetirSenha", {
-                      required: "Campo obrigatório, por favor preencha!",
-                      validate: (password) =>
-                        password === getValues("senha") ||
-                        "As senhas devem ser iguais",
-                    })}
-                    className="bg-transparent h-10 w-full ring-1 rounded-md ring-zinc-400/50  outline-none text-white font-md px-2  focus:ring-green-haze-500 focus:shadow-md focus:shadow-green-haze-400"
-                  />
-                  {errors.repetirSenha && (
-                    <p className="text-red-600">{`${errors.repetirSenha.message}`}</p>
-                  )}
-                </div>
-              </div>
-
-              <Button
-                disabled={isSubmitting}
-                type="submit"
-                label="confirmar"
-                variant="primary"
-              />
-            </form>
-          </div>
-        </div>
+          <button className="px-10 w-full flex flex-row gap-4 items-center justify-center rounded-md shadow-lg shadow-green-haze-900 py-2 bg-green-haze-700 text-white font-medium hover:bg-green-haze-500 transition-all">
+            Confirmar
+          </button>
+        </form>
       </div>
     </div>
   );
