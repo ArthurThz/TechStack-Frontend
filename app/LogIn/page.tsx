@@ -32,8 +32,6 @@ const LogIn = () => {
 
   // Login funtion
   const onSubmit = async (data: FieldValues) => {
-    console.log(data);
-    return;
     try {
       const response = await apiRoute.post("/users/login", data);
 
@@ -95,7 +93,7 @@ const LogIn = () => {
             label="Email"
             type="text"
             icon={<MdEmail />}
-            registerName="email"
+            {...register("email")}
           />
           <div className="flex flex-col items-start gap-2 w-full">
             <div className="w-full flex items-center h-auto relative">

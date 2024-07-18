@@ -6,7 +6,8 @@ import { useAppSelector } from "@/redux/store";
 import { apiRoute } from "@/services/api";
 import { AiOutlineLoading } from "react-icons/ai";
 import PostItem from "../components/Posts/post-item";
-
+import Header from "../components/pages/Home/header";
+import Logo from "../components/Layout/Logo/indext";
 const Feed = () => {
   const { isAuth } = useAppSelector((state) => state.authReducer.value);
 
@@ -27,24 +28,29 @@ const Feed = () => {
     setPosts(data.reverse());
     setIsLoading(false);
   };
-  return (
-    <div className="w-full h-full flex flex-col items-center px-2 md:px-6 py-10 overflow-y-auto bg-zinc-900">
-      {isLoading ? (
-        <>
-          <div className="h-screen w-full flex items-center justify-center">
-            <AiOutlineLoading
-              size={40}
-              className=" text-green-haze-500 animate-spin"
-            />
-          </div>
-        </>
-      ) : (
-        <div className="flex flex-col w-full gap-10 items-center">
-          {posts.map((post) => {
-            return <PostItem post={post} key={post.id} type="feed" />;
-          })}
+
+  if (isLoading) {
+    return (
+      <>
+        <div className="h-screen w-full flex items-center justify-center">
+          <AiOutlineLoading
+            size={40}
+            className=" text-green-haze-500 animate-spin"
+          />
         </div>
-      )}
+      </>
+    );
+  }
+
+  return (
+    <div className="flex flex-col items-center bg-zinc-900">
+      <Logo />
+
+      <div className="w-full h-full mt-4 mb-6 flex flex-col items-center gap-4 px-2 md:px-6 py-10 overflow-y-auto bg-zinc-900">
+        {posts.map((post) => {
+          return <PostItem post={post} key={post.id} type="feed" />;
+        })}
+      </div>
     </div>
   );
 };

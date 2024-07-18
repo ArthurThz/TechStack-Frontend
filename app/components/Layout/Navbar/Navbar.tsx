@@ -29,12 +29,12 @@ const Navbar = () => {
     <>
       {isAuth && (
         <nav
-          className="w-full bg-woodsmoke-950/90  px-2 flex py-1 z-10 md:bg-zinc-800 bottom-0 items-center justify-center fixed h-auto md:w-[20%] md:py-8
-      md:border-r md:items-center md:static 
-     md:border-r-green-haze-500 md:h-screen md:flex  md:flex-col"
+          className="w-full bg-woodsmoke-950/90  px-2 flex py-1 z-10 md:bg-zinc-800 bottom-0 items-center justify-center fixed h-auto lg:w-[20%] lg:py-8
+      lg:border-r lg:items-center lg:static 
+     lg:border-r-green-haze-500 lg:h-screen lg:flex  lg:flex-col"
         >
           {/* Logo container */}
-          <div className=" hidden md:flex  md:flex-row md:items-center md:gap-3">
+          <div className=" hidden lg:flex  lg:flex-row lg:items-center lg:gap-3">
             <Image
               src="/wifi-icon.svg"
               alt="wifi icon"
@@ -46,8 +46,8 @@ const Navbar = () => {
             </h1>
           </div>
           {/* Options container */}
-          <div className="w-auto min-w-[60%] flex flex-row items-center justify-between md:flex-col md:items-center md:py-16 md:h-full md:justify-start md:gap-5">
-            {isAuth ? (
+          <div className="w-[80%] min-w-[60%] flex flex-row items-center justify-between lg:flex-col lg:items-center lg:py-16 lg:h-full lg:justify-start lg:gap-5">
+            {isAuth && (
               <>
                 <NavItem href="/Feed">
                   <FaHome />
@@ -71,21 +71,6 @@ const Navbar = () => {
                   <IoExit size={23} />
                   <span>Sair</span>
                 </button>
-              </>
-            ) : (
-              <>
-                <NavItem href="/">
-                  <FaHome />
-                  <span> Home</span>
-                </NavItem>
-                <NavItem href="/LogIn">
-                  <FaWifi />
-                  <span>Login</span>
-                </NavItem>
-                <NavItem href="/SignUp">
-                  <FaUserPlus />
-                  <span>Cadastro</span>
-                </NavItem>
               </>
             )}
           </div>

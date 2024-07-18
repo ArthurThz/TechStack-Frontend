@@ -76,37 +76,39 @@ const UserProfile = () => {
 
     setPosts(postsArray);
   };
+
+  if (isLoading) {
+    return (
+      <>
+        <div className="h-screen w-full flex items-center justify-center">
+          <AiOutlineLoading
+            size={40}
+            className=" text-green-haze-500 animate-spin"
+          />
+        </div>
+      </>
+    );
+  }
   return (
     <div className="w-full h-full flex flex-col items-center px-2 md:px-6 py-10 overflow-y-auto bg-zinc-900">
-      {isLoading ? (
-        <>
-          <div className="h-screen w-full flex items-center justify-center">
-            <AiOutlineLoading
-              size={40}
-              className=" text-green-haze-500 animate-spin"
-            />
-          </div>
-        </>
-      ) : (
-        <div className="flex flex-col w-full gap-10 items-center py-10 oveflow-y-auto">
-          <UserHeader user={user} />
+      <div className="flex flex-col w-full gap-10 items-center py-10 oveflow-y-auto">
+        <UserHeader user={user} />
 
-          {posts.length > 0 ? (
-            posts.map((post) => {
-              return (
-                <PostItem
-                  key={post.id}
-                  post={post}
-                  type="user"
-                  onNoteDeleted={handleOnDeletePost}
-                />
-              );
-            })
-          ) : (
-            <EmptyPosts />
-          )}
-        </div>
-      )}
+        {posts.length > 0 ? (
+          posts.map((post) => {
+            return (
+              <PostItem
+                key={post.id}
+                post={post}
+                type="user"
+                onNoteDeleted={handleOnDeletePost}
+              />
+            );
+          })
+        ) : (
+          <EmptyPosts />
+        )}
+      </div>
     </div>
   );
 };

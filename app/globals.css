@@ -52,3 +52,9 @@
     background-image:url("../public/login-icon.svg");
     background-size: 80% 80%;
 }
+
+::-webkit-scrollbar {
+    width: 0;
+  }
+  
+  
