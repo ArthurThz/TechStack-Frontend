@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const Logo = () => {
   return (
-    <div className="w-full h-auto py-2 bg-zinc-900 z-10 px-2 gap-2 flex items-center fixed top-0">
+    <div className="w-full h-auto py-2 bg-zinc-900 z-10 px-2 gap-2 flex items-center fixed top-0 lg:hidden">
       <div className="w-[25px]">
         <Image
           alt="tech stack logo"

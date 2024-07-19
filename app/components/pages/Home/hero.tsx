@@ -64,7 +64,6 @@ const HeroSection = () => {
           </Link>
         </motion.div>
       </motion.div>
-      {/* mobile image */}
     </motion.div>
   );
 };

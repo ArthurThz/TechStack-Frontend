@@ -1,17 +1,15 @@
 "use client";
-import Image from "next/image";
 import React, { useState } from "react";
 import { AppDispatch, useAppSelector } from "@/redux/store";
 import { logOut } from "@/redux/features/auth-slice";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import NavItem from "./Navitem";
-import { FaHome } from "react-icons/fa";
+import { FaDoorOpen, FaHome } from "react-icons/fa";
 import { FaSquarePlus } from "react-icons/fa6";
 import { FaUser } from "react-icons/fa";
-import { FaUserPlus } from "react-icons/fa";
-import { FaWifi } from "react-icons/fa";
-import { IoExit } from "react-icons/io5";
+import { IoLogOut } from "react-icons/io5";
+import LogOutButton from "./LogoutButton";
 
 const Navbar = () => {
   const router = useRouter();
@@ -28,52 +26,24 @@ const Navbar = () => {
   return (
     <>
       {isAuth && (
-        <nav
-          className="w-full bg-woodsmoke-950/90  px-2 flex py-1 z-10 md:bg-zinc-800 bottom-0 items-center justify-center fixed h-auto lg:w-[20%] lg:py-8
-      lg:border-r lg:items-center lg:static 
-     lg:border-r-green-haze-500 lg:h-screen lg:flex  lg:flex-col"
-        >
-          {/* Logo container */}
-          <div className=" hidden lg:flex  lg:flex-row lg:items-center lg:gap-3">
-            <Image
-              src="/wifi-icon.svg"
-              alt="wifi icon"
-              height={30}
-              width={30}
-            />
-            <h1 className="text-white font-bold text-2xl">
-              Tech<span className="text-green-haze-500">Stack</span>
-            </h1>
-          </div>
-          {/* Options container */}
-          <div className="w-[80%] min-w-[60%] flex flex-row items-center justify-between lg:flex-col lg:items-center lg:py-16 lg:h-full lg:justify-start lg:gap-5">
-            {isAuth && (
-              <>
-                <NavItem href="/Feed">
-                  <FaHome />
-                  <span>Home</span>
-                </NavItem>
+        <nav className="w-full rounded-tr-lg rounded-tl-lg ring-2 ring-green-haze-500/50 h-auto z-10 fixed bottom-0 bg-zinc-900 py-2 px-4 flex items-center justify-center gap-6 md:gap-10 lg:static  lg:w-[100px] lg:flex-col lg:justify-start">
+          <NavItem href="/Feed" label="Home" icon={<FaHome size={15} />} />
+          <NavItem
+            href="/NewPost"
+            label="Publicar"
+            icon={<FaSquarePlus size={15} />}
+          />
+          <NavItem
+            href="/UserProfile"
+            label="Perfil"
+            icon={<FaUser size={15} />}
+          />
 
-                <NavItem href="/NewPost">
-                  <FaSquarePlus />
-                  <span>Novo Post</span>
-                </NavItem>
-
-                <NavItem href="/UserProfile">
-                  <FaUser />
-                  <span>Perfil</span>
-                </NavItem>
-
-                <button
-                  onClick={handleLogOut}
-                  className="w-auto text-lg font-sans font-medium flex flex-row items-center px-4 py-2 justify-start gap-3 text-green-haze-400 hover:text-white hover:bg-green-haze-500 rounded-md transition-all [&>span]:hidden md:[&>span]:block md:justify-start md:w-full"
-                >
-                  <IoExit size={23} />
-                  <span>Sair</span>
-                </button>
-              </>
-            )}
-          </div>
+          <LogOutButton
+            onClick={() => handleLogOut()}
+            icon={<FaDoorOpen size={15} />}
+            label="Sair"
+          />
         </nav>
       )}
     </>

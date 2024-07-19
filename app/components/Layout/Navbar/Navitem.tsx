@@ -2,17 +2,20 @@ import Link from "next/link";
 import React, { ReactNode } from "react";
 
 type NavItemProps = {
-  children: ReactNode;
   href: string;
+
+  icon?: ReactNode;
+  label: string;
 };
 
-const NavItem = ({ children, href }: NavItemProps) => {
+const NavItem = ({ label, icon, href }: NavItemProps) => {
   return (
     <Link
+      className="w-auto text-lg font-sans  flex flex-col items-center px-4 py-2 justify-center text-green-haze-500 hover:text-white hover:bg-green-haze-500 rounded-md transition-all lg:justify-start lg:w-full [&>span]:hover:text-white  md:[&>span]:block"
       href={href}
-      className="w-auto text-lg font-sans font-medium flex flex-row items-center px-4 py-2 justify-start gap-3 text-green-haze-400 hover:text-white hover:bg-green-haze-500 rounded-md transition-all lg:justify-start lg:w-full [&>span]:hidden lg:[&>span]:block"
     >
-      {children}
+      {icon}
+      <span className="text-[12px]  text-green-haze-500">{label}</span>
     </Link>
   );
 };

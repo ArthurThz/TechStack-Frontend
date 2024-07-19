@@ -1,18 +1,14 @@
 import React, { useEffect } from "react";
 import { FaTrash } from "react-icons/fa";
 import { FaPencil } from "react-icons/fa6";
-import { PostProps } from "../../types/posts";
+import { PostProps } from "../../../types/posts";
 import * as Dialog from "@radix-ui/react-dialog";
 import Image from "next/image";
 import type { FieldValues } from "react-hook-form";
 import { useForm } from "react-hook-form";
 import { apiRoute } from "@/services/api";
 import { useRouter } from "next/navigation";
-type PostItemProps = {
-  post: PostProps;
-  type: "user" | "feed";
-  onNoteDeleted?: (id: string) => void;
-};
+import { PostItemProps } from "./types";
 
 const PostItem = ({ post, onNoteDeleted, type }: PostItemProps) => {
   const router = useRouter();

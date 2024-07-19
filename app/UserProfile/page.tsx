@@ -7,7 +7,7 @@ import { apiRoute } from "@/services/api";
 
 import Image from "next/image";
 import Link from "next/link";
-import PostItem from "../components/Posts/post-item";
+import PostItem from "../components/Posts/PostItem";
 import { useAppSelector } from "@/redux/store";
 import { PostProps } from "../types/posts";
 import { AiOutlineLoading } from "react-icons/ai";
