@@ -5,15 +5,14 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { apiRoute } from "@/services/api";
 
-import Image from "next/image";
-import Link from "next/link";
-import PostItem from "../components/Posts/PostItem";
+import PostItem from "../components/PostItem";
 import { useAppSelector } from "@/redux/store";
 import { PostProps } from "../types/posts";
 import { AiOutlineLoading } from "react-icons/ai";
 import UserHeader from "../components/pages/Profile/user-header";
 import EmptyPosts from "../components/pages/Profile/empty-posts";
 import { toast } from "sonner";
+import PostsContainer from "../components/PostContainer";
 
 type UserProps = {
   nome: string;
@@ -51,7 +50,7 @@ const UserProfile = () => {
     const qtdPosts = userPosts.length;
 
     setUser({ ...userInfo[0], qtdPosts });
-    setPosts(userPosts.reverse());
+    setPosts(userPosts);
 
     setIsLoading(false);
   };
@@ -95,16 +94,11 @@ const UserProfile = () => {
         <UserHeader user={user} />
 
         {posts.length > 0 ? (
-          posts.map((post) => {
-            return (
-              <PostItem
-                key={post.id}
-                post={post}
-                type="user"
-                onNoteDeleted={handleOnDeletePost}
-              />
-            );
-          })
+          <PostsContainer
+            posts={posts}
+            showOptions
+            onNoteDeleted={handleOnDeletePost}
+          />
         ) : (
           <EmptyPosts />
         )}
