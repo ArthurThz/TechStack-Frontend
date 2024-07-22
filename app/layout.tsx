@@ -5,6 +5,7 @@ import Navbar from "./components/Layout/Navbar/Navbar";
 import ReduxProvider from "@/redux/provider";
 import { Toaster } from "sonner";
 import Header from "./components/Layout/Header";
+import Logo from "./components/Layout/Logo";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,6 +31,7 @@ export default function RootLayout({
       >
         <ReduxProvider>
           <Toaster richColors />
+          <Logo />
           <Navbar />
           {children}
         </ReduxProvider>

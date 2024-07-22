@@ -26,7 +26,7 @@ const Navbar = () => {
   return (
     <>
       {isAuth && (
-        <nav className="w-full rounded-tr-lg rounded-tl-lg ring-2 ring-green-haze-500/50 h-auto z-10 fixed bottom-0 bg-zinc-900 py-2 px-4 flex items-center justify-center gap-6 md:gap-10 lg:static  lg:w-[100px] lg:flex-col lg:justify-start">
+        <nav className="w-full rounded-tr-lg rounded-tl-lg ring-2 ring-green-haze-500/50 h-auto z-20 fixed bottom-0 bg-zinc-900 py-2 px-4 flex items-center justify-center gap-6 md:gap-10 lg:static  lg:w-[100px] lg:flex-col lg:justify-start">
           <NavItem href="/Feed" label="Home" icon={<FaHome size={15} />} />
           <NavItem
             href="/NewPost"
