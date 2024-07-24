@@ -30,8 +30,8 @@ export default function RootLayout({
         className={`${inter.className} flex flex-col lg:flex-row h-screen w-full bg-zinc-950`}
       >
         <ReduxProvider>
-          <Toaster richColors />
           <Logo />
+          <Toaster richColors />
           <Navbar />
           {children}
         </ReduxProvider>

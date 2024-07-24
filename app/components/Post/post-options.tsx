@@ -7,7 +7,7 @@ const PostOptions = ({ onNoteDeleted, postId }: PostOptionsProps) => {
   const router = useRouter();
 
   const redirectToEditPost = () => {
-    router.push(`Posts/${postId}`);
+    router.push(`Posts/EditPost/${postId}`);
   };
   return (
     <div className="w-full h-auto p-4 flex flex-row gap-4 items-center justify-end md:justify-end text-green-haze-500 ">

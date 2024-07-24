@@ -19,6 +19,7 @@ import {
   FaUser,
 } from "react-icons/fa";
 import { IoMail } from "react-icons/io5";
+import Link from "next/link";
 
 const SignUp = () => {
   const router = useRouter();
@@ -78,23 +79,19 @@ const SignUp = () => {
           <Input label="Profissao" type="text" icon={<FaLaptopCode />} />
           <Input label="Github" type="text" icon={<FaGithub />} />
           <Input label="Senha" type="text" icon={<FaLock />} />
-          {/* <div className=" w-full max-w-[300px] flex flex-col gap-2">
-                  <input
-                    type="text"
-                    placeholder="Nome *"
-                    {...register("nome", {
-                      required: "Campo obrigatório, por favor preencha!",
-                    })}
-                    className="bg-transparent h-10 w-full ring-1 rounded-md ring-zinc-400/50  outline-none text-white font-md px-2  focus:ring-green-haze-500 focus:shadow-md focus:shadow-green-haze-400"
-                  />
-                  {errors.nome && (
-                    <p className="text-red-600">{`${errors.nome.message}`}</p>
-                  )}
-                </div> */}
 
           <button className="px-10 w-full flex flex-row gap-4 items-center justify-center rounded-md shadow-lg shadow-green-haze-900 py-2 bg-green-haze-700 text-white font-medium hover:bg-green-haze-500 transition-all">
             Confirmar
           </button>
+          <span className="text-white font-medium text-sm mt-5">
+            Já possui uma conta?{" "}
+            <Link
+              href="/LogIn"
+              className="text-green-haze-500 font-medium text-md underline"
+            >
+              Login
+            </Link>
+          </span>
         </form>
       </div>
     </div>
