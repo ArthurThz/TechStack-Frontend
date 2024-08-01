@@ -15,6 +15,7 @@ import { FaArrowRight, FaEye, FaEyeSlash } from "react-icons/fa";
 import Link from "next/link";
 import Input from "../components/Layout/Input";
 import { LiaEye, LiaEyeSlash } from "react-icons/lia";
+import Logo from "../components/Layout/Logo";
 
 const LogIn = () => {
   // Router

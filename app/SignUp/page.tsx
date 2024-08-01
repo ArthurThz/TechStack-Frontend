@@ -20,6 +20,7 @@ import {
 } from "react-icons/fa";
 import { IoMail } from "react-icons/io5";
 import Link from "next/link";
+import Logo from "../components/Layout/Logo";
 
 const SignUp = () => {
   const router = useRouter();
@@ -53,9 +54,9 @@ const SignUp = () => {
   };
   return (
     <div className="w-full  min-h-screen ring-2 flex flex-col items-center justify-center  bg-zinc-900 overflow-y-auto">
-      <div className="w-[85%] lg:w-[50%] md:px-10 md:py-10 h-auto p-5 ring-2  ring-green-haze-500/30 flex flex-col gap-2 items-center rounded-lg shadow-lg shadow-green-haze-400/30">
+      <div className="w-[85%] lg:w-[45%] md:px-10 md:py-10 h-auto p-5 ring-2  ring-green-haze-500/30 flex flex-col gap-2 items-center rounded-lg shadow-lg shadow-green-haze-400/30 lg:h-[80%] lg:py-4">
         <Image
-          className="w-[200px] iphonexr:w-[250px] md:w-[300px] lg:w-[360px] h-auto "
+          className="w-[200px] iphonexr:w-[250px] md:w-[300px] lg:w-[250px] h-auto "
           src="/signup-icon.svg"
           width={500}
           height={40}

@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} flex flex-col lg:flex-row h-screen w-full bg-zinc-950`}
+        className={`${inter.className} flex flex-col lg:flex-row h-screen w-full bg-zinc-900`}
       >
         <ReduxProvider>
           <Logo />

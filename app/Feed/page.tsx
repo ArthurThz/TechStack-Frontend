@@ -6,6 +6,7 @@ import { useAppSelector } from "@/redux/store";
 import { apiRoute } from "@/services/api";
 import { AiOutlineLoading } from "react-icons/ai";
 import PostsContainer from "../components/PostContainer";
+import Logo from "../components/Layout/Logo";
 const Feed = () => {
   const { isAuth } = useAppSelector((state) => state.authReducer.value);
 

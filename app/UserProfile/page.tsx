@@ -13,6 +13,7 @@ import UserHeader from "../components/pages/Profile/user-header";
 import EmptyPosts from "../components/pages/Profile/empty-posts";
 import { toast } from "sonner";
 import PostsContainer from "../components/PostContainer";
+import Logo from "../components/Layout/Logo";
 
 type UserProps = {
   nome: string;

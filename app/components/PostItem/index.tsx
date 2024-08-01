@@ -14,7 +14,7 @@ const PostItem = ({
   const router = useRouter();
 
   return (
-    <div className="w-full relative h-auto px-4 py-10 flex flex-col gap-5 items-center border border-green-haze-500 rounded-md">
+    <div className="w-full relative h-auto px-4 py-10 flex flex-col gap-5 items-center border border-green-haze-500 rounded-md lg:w-[60%]">
       <PostHeader
         imgPath={post.profilepic}
         name={post.creatorname}

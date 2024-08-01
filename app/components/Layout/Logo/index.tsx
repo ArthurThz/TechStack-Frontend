@@ -6,7 +6,9 @@ import Link from "next/link";
 const Logo = () => {
   const { isAuth } = useAppSelector((state) => state.authReducer.value);
   return (
-    <div className="w-full h-auto py-2 bg-zinc-900 z-10 px-2 gap-2 flex items-center fixed top-0 lg:bg-transparent lg:px-4 lg:py-4">
+    <div
+      className={`w-full h-auto py-2 bg-zinc-900 z-10 px-2 gap-2 flex items-center fixed top-0 lg:bg-transparent lg:px-4 lg:z-20  `}
+    >
       <Link
         className="w-auto flex items-center gap-2"
         href={isAuth ? "/Feed" : "/"}
