@@ -16,3 +16,9 @@ export type PasswordInputProps = ComponentProps<'input'> & {
     showPasswordIcon:ReactNode;
     hidePasswordIcon:ReactNode;
 }
+
+export type postTextAreaProps = ComponentProps<'textarea'> & {
+    control:Control<any>;
+    label:string;
+    name:string;
+}

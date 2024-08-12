@@ -7,13 +7,14 @@ import { FieldValues, useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { apiRoute, gitHubApi } from "@/services/api";
 import { toast } from "sonner";
+import ConfirmButton from "../Layout/Button/ConfirmButton";
 
 const SignUpForm = () => {
   const router = useRouter();
   const {
     control,
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { isSubmitting },
     reset,
   } = useForm();
 
@@ -78,9 +79,7 @@ const SignUpForm = () => {
         icon={<FaLock />}
       />
 
-      <button className="px-10 w-full flex flex-row gap-4 items-center justify-center rounded-md shadow-lg shadow-green-haze-900 py-2 bg-green-haze-700 text-white font-medium hover:bg-green-haze-500 transition-all">
-        Confirmar
-      </button>
+      <ConfirmButton disabled={isSubmitting}>Confirmar</ConfirmButton>
       <span className="text-white font-medium text-sm mt-5">
         Já possui uma conta?{" "}
         <Link

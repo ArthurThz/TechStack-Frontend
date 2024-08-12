@@ -1,3 +1,4 @@
+import { ComponentProps, ReactNode } from "react";
 
 export interface IButton {
     label: string;
@@ -6,4 +7,9 @@ export interface IButton {
     onclick?: () => void,
     type?: 'submit' | 'reset' | 'button' | undefined,
     disabled?:boolean;
+}
+
+export type ConfirmButtonProps = ComponentProps<'button'> & {
+    children:ReactNode;
+    customClassName?:string;
 }

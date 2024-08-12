@@ -11,6 +11,9 @@ import Input from "../Layout/Input/Input";
 import { MdEmail } from "react-icons/md";
 import Link from "next/link";
 import PasswordInput from "../Layout/Input/PasswordInput";
+import ConfirmButton from "../Layout/Button/ConfirmButton";
+import { apiRoute } from "@/services/api";
+import { logIn } from "@/redux/features/auth-slice";
 
 const LoginForm = () => {
   // Router
@@ -29,9 +32,8 @@ const LoginForm = () => {
 
   // Login funtion
   const onSubmit = async (data: FieldValues) => {
-    console.log(data);
-    // const response = await axios.post("/api/login", { hello: "OI" });
-    // console.log(response);
+    const response = await axios.post("/api/login", data);
+    console.log(response);
     // try {
     //   const response = await apiRoute.post("/users/login", data);
     //   if (response.status !== 201) {
@@ -59,17 +61,18 @@ const LoginForm = () => {
         control={control}
       />
       <PasswordInput
-        name="passoword"
+        name="password"
         control={control}
         hidePasswordIcon={<FaEyeSlash />}
         showPasswordIcon={<FaEye />}
         placeholder="Senha"
       />
 
-      <button className="px-10 w-full flex flex-row gap-4 items-center justify-center rounded-md shadow-lg shadow-green-haze-900 py-2 bg-green-haze-700 text-white font-medium hover:bg-green-haze-500 transition-all">
+      <ConfirmButton disabled={isSubmitting}>
         Entrar
         <FaArrowRight />
-      </button>
+      </ConfirmButton>
+
       <span className="text-white font-medium text-sm mt-5">
         Ainda não tem uma conta?{" "}
         <Link
