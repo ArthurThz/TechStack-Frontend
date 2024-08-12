@@ -1,9 +1,18 @@
-import { InputHTMLAttributes, ReactNode } from "react"
+import { ComponentProps, InputHTMLAttributes, ReactNode } from "react"
+import { Control } from "react-hook-form";
 
 
-export interface IInput extends InputHTMLAttributes<HTMLInputElement>{
-    label:string,
+export type InputProps = ComponentProps<'input'> & {
+    control:Control<any>
     icon?: ReactNode,
+    name:string,
    
     
+}
+
+export type PasswordInputProps = ComponentProps<'input'> & {
+    control:Control<any>
+    name:string,
+    showPasswordIcon:ReactNode;
+    hidePasswordIcon:ReactNode;
 }
