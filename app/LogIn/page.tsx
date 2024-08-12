@@ -2,7 +2,6 @@
 import React, { ReactNode, useState } from "react";
 
 import Image from "next/image";
-import Button from "../components/Layout/Button/Button";
 import { logIn } from "@/redux/features/auth-slice";
 import { apiRoute } from "@/services/api";
 import { FieldValues, useForm } from "react-hook-form";
@@ -14,9 +13,8 @@ import { MdEmail } from "react-icons/md";
 import { FaArrowRight, FaEye, FaEyeSlash } from "react-icons/fa";
 import Link from "next/link";
 import Input from "../components/Layout/Input";
-import { LiaEye, LiaEyeSlash } from "react-icons/lia";
-import Logo from "../components/Layout/Logo";
-
+import { cookies } from "next/headers";
+import axios from "axios";
 const LogIn = () => {
   // Router
   const router = useRouter();
@@ -33,22 +31,20 @@ const LogIn = () => {
 
   // Login funtion
   const onSubmit = async (data: FieldValues) => {
-    try {
-      const response = await apiRoute.post("/users/login", data);
-
-      if (response.status !== 201) {
-        alert("Houve um erro verifique os dados e tente novamente");
-        return;
-      }
-
-      const userData = response.data;
-
-      dispatch(logIn(userData));
-
-      router.push("/Feed");
-    } catch (err) {
-      console.error(err);
-    }
+    const response = await axios.post("/api/login", { hello: "OI" });
+    console.log(response);
+    // try {
+    //   const response = await apiRoute.post("/users/login", data);
+    //   if (response.status !== 201) {
+    //     alert("Houve um erro verifique os dados e tente novamente");
+    //     return;
+    //   }
+    //   const userData = response.data;
+    //   dispatch(logIn(userData));
+    //   router.push("/Feed");
+    // } catch (err) {
+    //   console.error(err);
+    // }
   };
   // Password Input Handlers
   const defaultPasswordType = {

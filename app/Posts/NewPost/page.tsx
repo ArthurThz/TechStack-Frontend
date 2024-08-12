@@ -40,7 +40,7 @@ const NewPost = () => {
         Nova Publicação
       </h1>
       <form
-        className="w-full h-auto flex flex-col items-center gap-5 lg:w-[60%] lg:justify-center"
+        className="w-full h-auto flex flex-col items-center gap-5 lg:w-[60%] lg:justify-center lg:ml-44"
         onSubmit={handleSubmit(onSubmit)}
       >
         <PostInput label="Título" {...register("title")} />

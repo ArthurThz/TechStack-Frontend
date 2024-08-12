@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 const HeroSection = () => {
   return (
-    <motion.div className="h-full w-full flex flex-col items-center justify-center bg-zinc-900 lg:flex-row-reverse lg:items-center lg:justify-center gap-6 lg:gap-40">
+    <motion.div className="h-screen w-full flex flex-col items-center justify-center bg-zinc-900 lg:flex-row-reverse lg:items-center lg:justify-center gap-6 lg:gap-40">
       <motion.div
         initial={{ opacity: 0, x: -100 }}
         animate={{ opacity: 1, x: 0 }}

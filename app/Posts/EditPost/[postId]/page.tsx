@@ -8,6 +8,8 @@ import type { FieldValues } from "react-hook-form";
 import { useState } from "react";
 import { AiOutlineLoading } from "react-icons/ai";
 import { toast } from "sonner";
+import PostInput from "@/app/components/Post/form/post-input";
+import PostTextArea from "@/app/components/Post/form/post-textarea";
 const Post = ({ params }: { params: { postId: string } }) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
@@ -59,18 +61,11 @@ const Post = ({ params }: { params: { postId: string } }) => {
         Editar Publicação
       </h1>
       <form
-        className="w-full h-auto flex flex-col items-center gap-5"
+        className="w-full h-auto flex flex-col items-center gap-5 lg:w-[60%] lg:justify-center lg:ml-44"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <input
-          type="text"
-          className="bg-transparent h-10 w-full ring-1 rounded-md ring-zinc-400/50  outline-none text-white font-md px-2  focus:ring-green-haze-500 focus:shadow-sm focus:shadow-green-haze-400"
-          {...register("title")}
-        />
-        <textarea
-          className="resize-none bg-transparent py-4 px-6 min-h-[500px] overflow-y-auto h-auto w-full ring-1 rounded-md ring-zinc-400/50  outline-none text-white font-md  focus:ring-green-haze-500 focus:shadow-sm focus:shadow-green-haze-400"
-          {...register("content")}
-        />
+        <PostInput label="Título" {...register("title")} />
+        <PostTextArea label="Conteúdo" {...register("content")} />
         <div className="w-full h-auto  flex gap-4 justify-end py-2">
           <Button label="confirmar" variant="primary" type="submit" />
           <Button
