@@ -8,9 +8,7 @@ import { useRouter } from "next/navigation";
 import { apiRoute, gitHubApi } from "@/services/api";
 import { toast } from "sonner";
 
-type signUpFormProps = {};
-
-const SignUpForm = ({}: signUpFormProps) => {
+const SignUpForm = () => {
   const router = useRouter();
   const {
     register,
