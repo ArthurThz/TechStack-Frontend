@@ -12,7 +12,7 @@ import { useRouter } from "next/navigation";
 import { MdEmail } from "react-icons/md";
 import { FaArrowRight, FaEye, FaEyeSlash } from "react-icons/fa";
 import Link from "next/link";
-import Input from "../components/Layout/Input";
+import Input from "../components/Layout/Input/Input";
 import { cookies } from "next/headers";
 import axios from "axios";
 import FormHero from "../components/forms/FormHero";

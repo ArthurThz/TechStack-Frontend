@@ -7,7 +7,7 @@ import { useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import { FaArrowRight, FaEye, FaEyeSlash } from "react-icons/fa";
 import { useDispatch } from "react-redux";
-import Input from "../Layout/Input";
+import Input from "../Layout/Input/Input";
 import { MdEmail } from "react-icons/md";
 import Link from "next/link";
 import PasswordInput from "../Layout/Input/PasswordInput";
@@ -48,7 +48,7 @@ const LoginForm = () => {
 
   return (
     <form
-      className="w-full md:w-[70%]  justify-center h-auto py-10 flex flex-col px-5 items-center gap-4 lg:w-[50%] "
+      className="w-full md:w-[70%]  justify-center h-auto py-10 flex flex-col px-5 items-center gap-4 lg:max-w-[400px] "
       onSubmit={handleSubmit(onSubmit)}
     >
       <Input

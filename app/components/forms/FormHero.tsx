@@ -15,7 +15,7 @@ const FormHero = ({ children, imagePath, imageAltText }: FormHeroProps) => {
           src={imagePath}
           width={500}
           height={500}
-          className="w-[200px] iphonexr:w-[250px] md:w-[300px] lg:w-[350px] h-auto"
+          className="w-[200px] iphonexr:w-[250px] md:w-[300px] lg:w-[400px] h-auto"
         />
       )}
       {children}

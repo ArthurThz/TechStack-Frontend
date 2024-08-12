@@ -1,6 +1,6 @@
 "use client";
 import { FaUser, FaLaptopCode, FaGithub, FaLock } from "react-icons/fa";
-import Input from "../Layout/Input";
+import Input from "../Layout/Input/Input";
 import { IoMail } from "react-icons/io5";
 import Link from "next/link";
 import { FieldValues, useForm } from "react-hook-form";
@@ -11,11 +11,10 @@ import { toast } from "sonner";
 const SignUpForm = () => {
   const router = useRouter();
   const {
-    register,
+    control,
     handleSubmit,
     formState: { errors, isSubmitting },
     reset,
-    getValues,
   } = useForm();
 
   const onSubmit = async (userdata: FieldValues) => {
@@ -40,14 +39,44 @@ const SignUpForm = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="w-full h-auto p-2 flex flex-col items-center gap-4 mt-1 md:w-[70%] lg:w-[50%] md:mt-3"
+      className="w-full h-auto p-2 flex flex-col items-center gap-4 mt-1 md:w-[70%] lg:max-w-[400px] md:mt-3"
     >
       {/* grid wrapper */}
-      <Input label="Nome" type="text" icon={<FaUser />} />
-      <Input label="Email" type="text" icon={<IoMail />} />
-      <Input label="Profissao" type="text" icon={<FaLaptopCode />} />
-      <Input label="Github" type="text" icon={<FaGithub />} />
-      <Input label="Senha" type="text" icon={<FaLock />} />
+      <Input
+        control={control}
+        name="nome"
+        placeholder="Nome"
+        type="text"
+        icon={<FaUser />}
+      />
+      <Input
+        control={control}
+        name="email"
+        placeholder="Email"
+        type="text"
+        icon={<IoMail />}
+      />
+      <Input
+        control={control}
+        name="profissao"
+        placeholder="Profissao"
+        type="text"
+        icon={<FaLaptopCode />}
+      />
+      <Input
+        control={control}
+        name="github"
+        placeholder="Github"
+        type="text"
+        icon={<FaGithub />}
+      />
+      <Input
+        control={control}
+        name="senha"
+        placeholder="Senha"
+        type="text"
+        icon={<FaLock />}
+      />
 
       <button className="px-10 w-full flex flex-row gap-4 items-center justify-center rounded-md shadow-lg shadow-green-haze-900 py-2 bg-green-haze-700 text-white font-medium hover:bg-green-haze-500 transition-all">
         Confirmar
