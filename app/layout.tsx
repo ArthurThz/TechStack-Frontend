@@ -6,6 +6,8 @@ import ReduxProvider from "@/redux/provider";
 import { Toaster } from "sonner";
 import Header from "./components/Layout/Header";
 import Logo from "./components/Layout/Logo";
+import Wrapper from "./components/Layout/Wrapper";
+import AppContainer from "./components/Layout/AppContainer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,10 +32,15 @@ export default function RootLayout({
         className={`${inter.className} flex flex-col lg:flex-row h-screen w-full bg-zinc-900`}
       >
         <ReduxProvider>
-          <Logo />
-          <Toaster richColors />
-          <Navbar />
-          {children}
+          <Wrapper>
+            <Logo />
+            <Toaster richColors />
+            <AppContainer>
+              <Navbar />
+
+              {children}
+            </AppContainer>
+          </Wrapper>
         </ReduxProvider>
       </body>
     </html>

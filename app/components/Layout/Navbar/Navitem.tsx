@@ -11,7 +11,7 @@ type NavItemProps = {
 const NavItem = ({ label, icon, href }: NavItemProps) => {
   return (
     <Link
-      className="w-auto text-lg font-sans  flex flex-col items-center px-4 py-2 justify-center text-green-haze-500 hover:text-white hover:bg-green-haze-500 rounded-md transition-all  lg:w-[70%] [&>span]:hover:text-white  md:[&>span]:block lg:flex-row lg:items-center lg:justify-between lg:gap-4 lg:relative"
+      className="w-auto text-lg font-sans  flex flex-col items-center px-4 py-2 justify-center text-green-haze-500 hover:text-white hover:bg-green-haze-500 rounded-md transition-all lg:h-auto lg:w-[100%] [&>span]:hover:text-white  md:[&>span]:block lg:flex-row lg:items-center lg:justify-between lg:gap-4 lg:relative"
       href={href}
     >
       <div className="lg:absolute lg:left-2">{icon}</div>

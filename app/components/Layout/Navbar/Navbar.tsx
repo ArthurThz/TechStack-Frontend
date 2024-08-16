@@ -13,7 +13,6 @@ import LogOutButton from "./LogoutButton";
 
 const Navbar = () => {
   const router = useRouter();
-  const [shouldShowNavbar, setShouldShowNavbar] = useState(false);
   const { isAuth } = useAppSelector((state) => state.authReducer.value);
 
   const dispatch = useDispatch<AppDispatch>();
@@ -26,26 +25,34 @@ const Navbar = () => {
   return (
     <>
       {isAuth && (
-        <nav className="w-full rounded-tr-lg rounded-tl-lg ring-2 ring-green-haze-500/50 h-auto z-20 fixed bottom-0 bg-zinc-900 py-2 px-4 flex items-center justify-center gap-6 md:gap-10 lg:w-[12%] lg:h-full lg:flex-col lg:items-center lg:bg-transparent lg:ring-0 lg:border-r-green-haze-500 lg:border-r lg:rounded-none lg:z-10">
+        <nav className="w-full rounded-tr-lg rounded-tl-lg ring-2 ring-green-haze-500/50 h-auto z-20 fixed bottom-0 bg-zinc-900 py-2 px-4 flex items-center justify-center gap-6 md:gap-10 lg:w-[15%] lg:left-0 lg:h-full lg:flex-col lg:justify-start lg:items-start lg:pt-40 lg:bg-transparent lg:ring-0 lg:border-r-green-haze-500 lg:border-r lg:rounded-none lg:z-10">
           <NavItem
             href="/Feed"
             label="Home"
-            icon={<FaHome className="w-[15px] md:w-[18px] lg:[26px]" />}
+            icon={
+              <FaHome className="text-[15px] md:text-[18px] lg:text-[24px]" />
+            }
           />
           <NavItem
             href="/NewPost"
             label="Publicar"
-            icon={<FaSquarePlus className="w-[15px] md:w-[18px] lg:[26px]" />}
+            icon={
+              <FaSquarePlus className="text-[15px] md:text-[18px] lg:text-[24px]" />
+            }
           />
           <NavItem
             href="/UserProfile"
             label="Perfil"
-            icon={<FaUser className="w-[15px] md:w-[18px] lg:[26px]" />}
+            icon={
+              <FaUser className="text-[15px] md:text-[18px] lg:text-[24px]" />
+            }
           />
 
           <LogOutButton
             onClick={() => handleLogOut()}
-            icon={<FaDoorOpen className="w-[15px] md:w-[18px] lg:[26px]" />}
+            icon={
+              <FaDoorOpen className="text-[15px] md:text-[18px] lg:text-[24px]" />
+            }
             label="Sair"
           />
         </nav>

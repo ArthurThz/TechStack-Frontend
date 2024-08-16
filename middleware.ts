@@ -5,9 +5,7 @@ export function middleware (req:NextRequest){
 
 
     
-    if(req.nextUrl.pathname === '/Feed'){
-        console.log('logando do /Feed')
-    }
+   
    
    
     
