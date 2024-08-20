@@ -14,6 +14,7 @@ import EmptyPosts from "../components/pages/Profile/empty-posts";
 import { toast } from "sonner";
 import PostsContainer from "../components/PostContainer";
 import Logo from "../components/Layout/Logo";
+import UserPostContainer from "../components/Post/User/UserPostContainer";
 
 type UserProps = {
   nome: string;
@@ -94,15 +95,12 @@ const UserProfile = () => {
       <div className="flex flex-col w-full gap-10 items-center py-10 oveflow-y-auto">
         <UserHeader user={user} />
 
-        {posts.length > 0 ? (
-          <PostsContainer
-            posts={posts}
-            showOptions
-            onNoteDeleted={handleOnDeletePost}
-          />
-        ) : (
-          <EmptyPosts />
-        )}
+        {/* <PostsContainer
+          posts={posts}
+          showOptions
+          onNoteDeleted={handleOnDeletePost}
+        /> */}
+        <UserPostContainer posts={posts} onNoteDeleted={handleOnDeletePost} />
       </div>
     </div>
   );

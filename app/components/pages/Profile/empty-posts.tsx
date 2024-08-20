@@ -9,7 +9,7 @@ const EmptyPosts = () => {
       </h1>
       <Link
         className="border border-green-haze-500 px-4 py-3 font-medium rounded-md text-lg text-green-haze-500 transition-all shadow-sm shadow-green-haze-500/50 hover:bg-woodsmoke-950/10 hover:shadow-green-haze-500  hover:text-green-haze-400"
-        href="/Post"
+        href="/Posts/NewPost"
       >
         Criar Novo Post!
       </Link>
