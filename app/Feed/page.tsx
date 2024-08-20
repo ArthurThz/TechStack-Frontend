@@ -7,6 +7,7 @@ import { apiRoute } from "@/services/api";
 import { AiOutlineLoading } from "react-icons/ai";
 import PostsContainer from "../components/PostContainer";
 import Logo from "../components/Layout/Logo";
+import FeedPostContainer from "../components/Post/Feed/FeedPostContainer";
 const Feed = () => {
   const { isAuth } = useAppSelector((state) => state.authReducer.value);
 
@@ -43,7 +44,7 @@ const Feed = () => {
 
   return (
     <div className="flex flex-col items-center bg-zinc-900">
-      <PostsContainer posts={posts} />
+      <FeedPostContainer posts={posts} />
     </div>
   );
 };
