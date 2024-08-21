@@ -15,47 +15,12 @@ import { toast } from "sonner";
 import PostsContainer from "../components/PostContainer";
 import Logo from "../components/Layout/Logo";
 import UserPostContainer from "../components/Post/User/UserPostContainer";
-
-type UserProps = {
-  nome: string;
-  qtdPosts: string;
-  profissao: string;
-  profilepic: string;
-};
+import { useUserPosts } from "../hooks/useUserPosts";
+import Loader from "../components/Layout/Loader";
 
 const UserProfile = () => {
-  // states
-
-  const [user, setUser] = useState<UserProps>({
-    nome: "",
-    qtdPosts: "",
-    profissao: "",
-    profilepic: "",
-  });
-  const [posts, setPosts] = useState<PostProps[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  const { id, isAuth } = useAppSelector((state) => state.authReducer.value);
-
-  useEffect(() => {
-    if (!isAuth) {
-      return;
-    }
-    getUserProfile(id);
-  }, [id, isAuth]);
-
-  const getUserProfile = async (id: string) => {
-    const response = await apiRoute.get(`/user/profile/${id}`);
-
-    const { userInfo, userPosts } = response.data;
-
-    const qtdPosts = userPosts.length;
-
-    setUser({ ...userInfo[0], qtdPosts });
-    setPosts(userPosts);
-
-    setIsLoading(false);
-  };
+  const { id } = useAppSelector((state) => state.authReducer.value);
+  const { posts, user, setPosts } = useUserPosts({ id });
 
   const handleOnDeletePost = async (id: string) => {
     const response = await apiRoute.delete(`/post/${id}`);
@@ -78,28 +43,14 @@ const UserProfile = () => {
     setPosts(postsArray);
   };
 
-  if (isLoading) {
-    return (
-      <>
-        <div className="h-screen w-full flex items-center justify-center">
-          <AiOutlineLoading
-            size={40}
-            className=" text-green-haze-500 animate-spin"
-          />
-        </div>
-      </>
-    );
+  if (!posts || !user) {
+    return <Loader />;
   }
   return (
     <div className="w-full h-full flex flex-col items-center px-2 md:px-6 py-10 overflow-y-auto bg-zinc-900">
       <div className="flex flex-col w-full gap-10 items-center py-10 oveflow-y-auto">
         <UserHeader user={user} />
 
-        {/* <PostsContainer
-          posts={posts}
-          showOptions
-          onNoteDeleted={handleOnDeletePost}
-        /> */}
         <UserPostContainer posts={posts} onNoteDeleted={handleOnDeletePost} />
       </div>
     </div>

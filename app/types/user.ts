@@ -6,3 +6,10 @@ export type IEditUser = {
     github:string;
 
 }
+
+export type UserProps = {
+    nome: string;
+    qtdPosts: string;
+    profissao: string;
+    profilepic: string;
+  };
