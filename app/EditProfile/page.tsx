@@ -9,6 +9,7 @@ import { AiOutlineLoading } from "react-icons/ai";
 import Link from "next/link";
 import type { FieldValues } from "react-hook-form";
 import { toast } from "sonner";
+import EditProfileForm from "../components/forms/EditProfileForm";
 
 const EditProfile = () => {
   const { id, isAuth } = useAppSelector((state) => state.authReducer.value);
@@ -53,7 +54,8 @@ const EditProfile = () => {
 
   return (
     <div className="bg-zinc-900 w-full py-10 px-5 h-screen flex flex-col items-center">
-      {isLoading ? (
+      <EditProfileForm id={id} />
+      {/* {isLoading ? (
         <>
           <div className="h-screen w-full flex items-center justify-center">
             <AiOutlineLoading
@@ -142,7 +144,7 @@ const EditProfile = () => {
             </div>
           </form>
         </>
-      )}
+      )} */}
     </div>
   );
 };

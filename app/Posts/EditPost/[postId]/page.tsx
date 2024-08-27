@@ -1,15 +1,5 @@
 "use client";
-import Button from "@/app/components/Layout/Button/Button";
-import { useForm } from "react-hook-form";
-import { useRouter } from "next/navigation";
-import { apiRoute } from "@/services/api";
-import type { FieldValues } from "react-hook-form";
 
-import { useState } from "react";
-import { AiOutlineLoading } from "react-icons/ai";
-import { toast } from "sonner";
-import PostInput from "@/app/components/Post/form/post-input";
-import PostTextArea from "@/app/components/Post/form/post-textarea";
 import EditPostForm from "@/app/components/forms/EditPostForm";
 const Post = ({ params }: { params: { postId: string } }) => {
   return (
