@@ -21,9 +21,7 @@ const LoginForm = () => {
   // Hook Form
   const {
     control,
-    register,
     handleSubmit,
-    reset,
     formState: { isSubmitting },
   } = useForm();
 

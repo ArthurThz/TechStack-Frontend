@@ -27,7 +27,7 @@ export const useUserPosts =  ({id} : {id:string}) =>{
       };
     useEffect(() => {
         getUserProfile()
-    }, [id]);
+    }, );
    
     
     return {user, posts, setPosts}

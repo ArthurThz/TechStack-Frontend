@@ -1,4 +1,4 @@
-import { ComponentProps, InputHTMLAttributes, ReactNode } from "react"
+import { ComponentProps, ComponentType, InputHTMLAttributes, ReactNode } from "react"
 import { Control } from "react-hook-form";
 
 
@@ -21,4 +21,10 @@ export type postTextAreaProps = ComponentProps<'textarea'> & {
     control:Control<any>;
     label:string;
     name:string;
+}
+
+export type PostInputProps = ComponentProps<'input'> & {
+    label:string,
+    name:string;
+    control:Control<any>
 }

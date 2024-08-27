@@ -37,8 +37,7 @@ export default function RootLayout({
             <Toaster richColors />
             <AppContainer>
               <Navbar />
-
-              {children}
+              <div className="w-full h-full overflow-y-auto">{children}</div>
             </AppContainer>
           </Wrapper>
         </ReduxProvider>

@@ -47,7 +47,7 @@ const NewPost = () => {
     setOpen(false);
   };
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-ful">
       <HeroSection>
         <HeroItem
           alt="imagem do astronauta"

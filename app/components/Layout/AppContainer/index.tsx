@@ -5,7 +5,7 @@ type appContainerProps = {
 };
 const AppContainer = ({ children }: appContainerProps) => {
   return (
-    <div className="w-full lg:ml-[10%] flex flex-col items-center lg:flex-row ">
+    <div className="w-full h-full gap-2 flex flex-col items-center lg:flex-row overflow-y-hidden">
       {children}
     </div>
   );

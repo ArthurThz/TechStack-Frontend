@@ -21,11 +21,11 @@ const Navbar = () => {
     dispatch(logOut());
     router.push("/");
   };
-
+  // lg:w-[15%] lg:left-0 lg:h-full lg:flex-col lg:justify-start lg:items-start lg:pt-40 lg:bg-transparent lg:ring-0 lg:border-r-green-haze-500 lg:border-r lg:rounded-none lg:z-10
   return (
     <>
       {isAuth && (
-        <nav className="w-full rounded-tr-lg rounded-tl-lg ring-2 ring-green-haze-500/50 h-auto z-20 fixed bottom-0 bg-zinc-900 py-2 px-4 flex items-center justify-center gap-6 md:gap-10 lg:w-[15%] lg:left-0 lg:h-full lg:flex-col lg:justify-start lg:items-start lg:pt-40 lg:bg-transparent lg:ring-0 lg:border-r-green-haze-500 lg:border-r lg:rounded-none lg:z-10">
+        <nav className="w-full rounded-tr-lg rounded-tl-lg ring-2 ring-green-haze-500/50 h-auto z-20 fixed bottom-0 bg-zinc-900 py-2 px-4 flex items-center justify-center gap-6 md:gap-10 lg:flex-col lg:static lg:h-full lg:bg-transparent lg:w-[15%] lg:ring-0 lg:border-r-green-haze-500 lg:border-r lg:rounded-none lg:pt-40 lg:justify-start lg:px-4">
           <NavItem
             href="/Feed"
             label="Home"

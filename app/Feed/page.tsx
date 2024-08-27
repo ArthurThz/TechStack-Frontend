@@ -10,7 +10,7 @@ const Feed = () => {
     return <Loader />;
   }
   return (
-    <div className="flex flex-col items-center bg-zinc-900">
+    <div className="w-full flex flex-col items-center bg-zinc-900">
       <FeedPostContainer posts={posts} />
     </div>
   );
