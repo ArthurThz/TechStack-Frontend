@@ -9,7 +9,7 @@ import Button from "../Layout/Button/Button";
 import PostTextArea from "../Layout/Input/PostTextArea";
 import ConfirmButton from "../Layout/Button/ConfirmButton";
 import Input from "../Layout/Input/Input";
-import PostInput from "../Layout/Input/PostInput";
+import PostInput from "../Layout/Input/LabeledInput";
 
 type editPostProps = {
   id: string;

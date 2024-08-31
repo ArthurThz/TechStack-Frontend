@@ -1,7 +1,12 @@
 import { useController } from "react-hook-form";
-import { PostInputProps } from "./types";
+import { LabeledInputProps } from "./types";
 
-const PostInput = ({ control, label, name, ...inputProps }: PostInputProps) => {
+const LabeledInput = ({
+  control,
+  label,
+  name,
+  ...inputProps
+}: LabeledInputProps) => {
   const {
     formState: { errors },
   } = useController({ control, name });
@@ -25,4 +30,4 @@ const PostInput = ({ control, label, name, ...inputProps }: PostInputProps) => {
   );
 };
 
-export default PostInput;
+export default LabeledInput;

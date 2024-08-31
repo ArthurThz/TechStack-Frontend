@@ -3,33 +3,31 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import { toast } from "sonner";
-import PostInput from "../Layout/Input/PostInput";
 import ConfirmButton from "../Layout/Button/ConfirmButton";
 import Button from "../Layout/Button/Button";
 import Loader from "../Layout/Loader";
+import LabeledInput from "../Layout/Input/LabeledInput";
 
 type EditProfileFormProps = {
   id: string;
 };
+
 const EditProfileForm = ({ id }: EditProfileFormProps) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
+
   const getPost = async () => {
     const response = await apiRoute.get(`/user/${id}`);
     return response.data[0];
   };
 
-  const { control, register, handleSubmit } = useForm({
+  const { control, handleSubmit } = useForm({
     defaultValues: async () => {
       const response = getPost();
       setIsLoading(false);
       return response;
     },
   });
-
-  const backUserProfile = () => {
-    router.push("UserProfile");
-  };
 
   const onSubmit = async (postData: FieldValues) => {
     setIsLoading(true);
@@ -50,22 +48,41 @@ const EditProfileForm = ({ id }: EditProfileFormProps) => {
   };
 
   if (isLoading) return <Loader />;
+
   return (
-    <form className="w-full px-4 flex flex-col gap-4 items-center lg:w-[50%]">
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="w-full px-4 flex flex-col gap-4 items-center lg:w-[50%]"
+    >
       <h1 className="text-2xl mt-4 text-white font-bold lg:mb-10">
         Editar Perfil
       </h1>
-      <PostInput control={control} label="Nome" name="nome" type="text" />
-      <PostInput control={control} label="Nome" name="email" type="text" />
-      <PostInput control={control} label="Nome" name="profissao" type="text" />
-      <PostInput control={control} label="Nome" name="senha" type="password" />
-      <PostInput control={control} label="Nome" name="github" type="text" />
+      <LabeledInput control={control} label="Nome" name="nome" type="text" />
+      <LabeledInput control={control} label="Email" name="email" type="text" />
+      <LabeledInput
+        control={control}
+        label="Profissão"
+        name="profissao"
+        type="text"
+      />
+      <LabeledInput
+        control={control}
+        label="Senha"
+        name="senha"
+        type="password"
+      />
+      <LabeledInput
+        control={control}
+        label="GitHub"
+        name="github"
+        type="text"
+      />
       <div className="w-full flex justify-end gap-2">
         <ConfirmButton customClassName="w-[150px]">Confirmar</ConfirmButton>
         <Button
           label="cancelar"
           variant="secondary"
-          onclick={backUserProfile}
+          onclick={() => router.push("UserProfile")}
         />
       </div>
     </form>

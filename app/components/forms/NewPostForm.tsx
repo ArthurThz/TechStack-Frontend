@@ -4,7 +4,7 @@ import { useState } from "react";
 import { FieldValues, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import Loader from "../Layout/Loader";
-import PostInput from "../Layout/Input/PostInput";
+import PostInput from "../Layout/Input/LabeledInput";
 import PostTextArea from "../Layout/Input/PostTextArea";
 import ConfirmButton from "../Layout/Button/ConfirmButton";
 import Button from "../Layout/Button/Button";

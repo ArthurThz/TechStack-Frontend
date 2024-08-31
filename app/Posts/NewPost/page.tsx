@@ -8,7 +8,7 @@ import type { FieldValues } from "react-hook-form";
 import { useState } from "react";
 import { toast } from "sonner";
 import PostTextArea from "@/app/components/Layout/Input/PostTextArea";
-import PostInput from "@/app/components/Layout/Input/PostInput";
+import PostInput from "@/app/components/Layout/Input/LabeledInput";
 import Loader from "@/app/components/Layout/Loader";
 import NewPostForm from "@/app/components/forms/NewPostForm";
 

@@ -1,6 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-type UserProps = {
+
+type UserHeaderProps = {
   user: {
     nome: string;
     profissao: string;
@@ -9,7 +12,7 @@ type UserProps = {
   };
 };
 
-const UserHeader = ({ user }: UserProps) => {
+const UserHeader = ({ user }: UserHeaderProps) => {
   return (
     <div className="flex flex-row items-center gap-4">
       <div className="rounded-full flex items-center justify-center w-28  md:w-44 ring-2 ring-green-haze-500">

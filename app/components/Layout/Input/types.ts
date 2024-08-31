@@ -23,7 +23,7 @@ export type postTextAreaProps = ComponentProps<'textarea'> & {
     name:string;
 }
 
-export type PostInputProps = ComponentProps<'input'> & {
+export type LabeledInputProps = ComponentProps<'input'> & {
     label:string,
     name:string;
     control:Control<any>
