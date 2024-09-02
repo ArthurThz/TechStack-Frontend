@@ -12,7 +12,7 @@ import EmptyPosts from "../components/Post/User/EmptyPosts";
 const UserProfile = () => {
   const { id } = useAppSelector((state) => state.authReducer.value);
   const { posts, handleOnDeletePost, isLoadingPosts } = useUserPosts({ id });
-  const { user, isLoadingProfileHeader } = useUserProfileHeader({ id });
+  const { user } = useUserProfileHeader({ id });
 
   if (!user) return <Loader />;
   return (

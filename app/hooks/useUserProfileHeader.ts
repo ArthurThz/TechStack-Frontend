@@ -36,7 +36,6 @@ export const useUserProfileHeader = ({ id }: { id: string }) => {
 
   useEffect(() => {
     fetchUserProfileHeaderData();
-    console.log("userProfileHeaderHook")
   }, [id]);
 
   return { isLoadingProfileHeader, user, error };

@@ -29,7 +29,6 @@ export const useUserPosts =  ({id} : {id:string}) =>{
       
       };
     useEffect(() => {
-        console.log("UserPostsHook")
         getUserProfile()
     },[] );
 
