@@ -7,9 +7,11 @@ export const usePosts =  () =>{
 
     const [posts, setPosts] = useState<PostProps[] | null>([]);
     const [error, setError] = useState<string | null >(null);
+    const [isLoadingFeed, setisLoadingFeed] = useState(false);
     const fetchPosts = async () =>{
         try{
-            const response = await apiRoute.get("/posts/geral")
+            setisLoadingFeed(true)
+            const response = await apiRoute.get("/posts/general")
             if(response.data) {
                 setPosts(response.data)
             } else {
@@ -17,6 +19,8 @@ export const usePosts =  () =>{
             }
         }catch(err :  any){
             setError(err.message)
+        }finally{
+            setisLoadingFeed(false)
         }
     }
     useEffect(() => {
@@ -24,5 +28,5 @@ export const usePosts =  () =>{
     }, []);
    
     
-    return {posts, error}
+    return {posts, error, isLoadingFeed}
 }
