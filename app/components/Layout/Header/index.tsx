@@ -14,7 +14,7 @@ const Header = () => {
           <Navbar />
         </>
       ) : (
-        <header className="absolute px-4 md:px-10 py-5 h-auto w-full top-0 right-0 left-0 flex flex-row items-center justify-between bg-transparent">
+        <header className="absolute px-4 md:px-10 py-5 h-auto w-full top-0 z-20 right-0 left-0 flex flex-row items-center justify-between bg-transparent">
           <Link
             href="/"
             className="flex gap-4 flex-row items-center px-1 mb-auto md:px-5 justify-center"
