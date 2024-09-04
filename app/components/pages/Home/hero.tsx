@@ -54,7 +54,7 @@ const HeroSection = () => {
             href="/LogIn"
             className="rounded-full px-4 text-sm md:text-md md:px-6 py-2 bg-green-haze-600 text-white shadow-md shadow-green-haze-800 hover:bg-green-haze-500 hover:shadow-lg hover:shadow-green-haze-500 transition-all"
           >
-            Criar Publicação
+            Acessar Plataforma
           </Link>
           <Link
             href="/SignUp"

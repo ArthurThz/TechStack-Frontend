@@ -21,8 +21,8 @@ type UserData = {
 }
 const initialState = {
     value:{
-        isAuth:true,
-        id:"f57cbc59-7b68-4cac-879c-1514ccbdbbc8",             
+        isAuth:false,
+        id:"",             
         token:"",
         
     } as AuthState

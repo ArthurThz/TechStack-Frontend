@@ -1,20 +1,5 @@
 "use client";
-import React, { ReactNode, useState } from "react";
 
-import Image from "next/image";
-import { logIn } from "@/redux/features/auth-slice";
-import { apiRoute } from "@/services/api";
-import { FieldValues, useForm } from "react-hook-form";
-
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "@/redux/store";
-import { useRouter } from "next/navigation";
-import { MdEmail } from "react-icons/md";
-import { FaArrowRight, FaEye, FaEyeSlash } from "react-icons/fa";
-import Link from "next/link";
-import Input from "../components/Layout/Input/Input";
-import { cookies } from "next/headers";
-import axios from "axios";
 import FormHero from "../components/forms/FormHero";
 import LoginForm from "../components/forms/LoginForm";
 const LogIn = () => {

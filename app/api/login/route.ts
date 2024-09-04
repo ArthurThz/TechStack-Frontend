@@ -14,7 +14,7 @@ export async function POST (req: NextRequest){
 
     try {
         apiRoute.post('/users/login',body)
-        createCookie({name:'teste',value:'123123'})
+        createCookie({name:'isAuth',value:"true"})
         
     }catch (err){
         return err
