@@ -1,7 +1,30 @@
-import { ReactNode } from "react"
+import { ComponentProps, ComponentType, InputHTMLAttributes, ReactNode } from "react"
+import { Control } from "react-hook-form";
 
-export type IInput = {
-    label:string,
+
+export type InputProps = ComponentProps<'input'> & {
+    control:Control<any>
     icon?: ReactNode,
-    type:string
+    name:string,
+   
+    
+}
+
+export type PasswordInputProps = ComponentProps<'input'> & {
+    control:Control<any>
+    name:string,
+    showPasswordIcon:ReactNode;
+    hidePasswordIcon:ReactNode;
+}
+
+export type postTextAreaProps = ComponentProps<'textarea'> & {
+    control:Control<any>;
+    label:string;
+    name:string;
+}
+
+export type LabeledInputProps = ComponentProps<'input'> & {
+    label:string,
+    name:string;
+    control:Control<any>
 }

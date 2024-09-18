@@ -1,111 +1,42 @@
 "use client";
 
-import React, { useState } from "react";
-
-import { useEffect } from "react";
-import { apiRoute } from "@/services/api";
-
-import Image from "next/image";
-import Link from "next/link";
-import PostItem from "../components/Posts/post-item";
 import { useAppSelector } from "@/redux/store";
-import { PostProps } from "../types/posts";
-import { AiOutlineLoading } from "react-icons/ai";
-import UserHeader from "../components/pages/Profile/user-header";
-import EmptyPosts from "../components/pages/Profile/empty-posts";
-import { toast } from "sonner";
-
-type UserProps = {
-  nome: string;
-  qtdPosts: string;
-  profissao: string;
-  profilepic: string;
-};
+import UserHeader from "../components/pages/Profile/UserHeader";
+import UserPostContainer from "../components/Post/User/UserPostContainer";
+import { useUserProfileHeader } from "../hooks/useUserProfile";
+import Loader from "../components/Layout/Loader";
+import Error from "../components/Error/Error";
 
 const UserProfile = () => {
-  // states
+  const { id, token } = useAppSelector((state) => state.authReducer.value);
 
-  const [user, setUser] = useState<UserProps>({
-    nome: "",
-    qtdPosts: "",
-    profissao: "",
-    profilepic: "",
-  });
-  const [posts, setPosts] = useState<PostProps[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const {
+    user,
+    userProfileError,
+    posts,
+    handleOnDeletePost,
+    isLoadingProfile,
+  } = useUserProfileHeader({ id, token });
 
-  const { id, isAuth } = useAppSelector((state) => state.authReducer.value);
+  if (userProfileError)
+    return (
+      <Error
+        code={userProfileError.code}
+        title={userProfileError.title}
+        message={userProfileError.message}
+      />
+    );
 
-  useEffect(() => {
-    if (!isAuth) {
-      return;
-    }
-    getUserProfile(id);
-  }, [id, isAuth]);
+  if (isLoadingProfile) return <Loader />;
 
-  const getUserProfile = async (id: string) => {
-    const response = await apiRoute.get(`/user/profile/${id}`);
-
-    const { userInfo, userPosts } = response.data;
-
-    const qtdPosts = userPosts.length;
-
-    setUser({ ...userInfo[0], qtdPosts });
-    setPosts(userPosts.reverse());
-
-    setIsLoading(false);
-  };
-
-  const handleOnDeletePost = async (id: string) => {
-    const response = await apiRoute.delete(`/post/${id}`);
-
-    const { status } = response;
-
-    if (status != 204) {
-      alert("Não foi possivel excluir a publicação, tente novamente!");
-      return;
-    }
-
-    const postsArray = posts.filter((item) => {
-      return item.id !== id;
-    });
-
-    toast.success("Post deletado com sucesso!", {
-      position: "bottom-left",
-    });
-
-    setPosts(postsArray);
-  };
   return (
-    <div className="w-full h-full flex flex-col items-center px-2 md:px-6 py-10 overflow-y-auto bg-zinc-900">
-      {isLoading ? (
+    <div className="flex flex-col w-full gap-10 items-center py-10 oveflow-y-auto">
+      {user && (
         <>
-          <div className="h-screen w-full flex items-center justify-center">
-            <AiOutlineLoading
-              size={40}
-              className=" text-green-haze-500 animate-spin"
-            />
-          </div>
-        </>
-      ) : (
-        <div className="flex flex-col w-full gap-10 items-center py-10 oveflow-y-auto">
           <UserHeader user={user} />
 
-          {posts.length > 0 ? (
-            posts.map((post) => {
-              return (
-                <PostItem
-                  key={post.id}
-                  post={post}
-                  type="user"
-                  onNoteDeleted={handleOnDeletePost}
-                />
-              );
-            })
-          ) : (
-            <EmptyPosts />
-          )}
-        </div>
+          <UserPostContainer posts={posts} onNoteDeleted={handleOnDeletePost} />
+        </>
       )}
     </div>
   );

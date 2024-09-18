@@ -5,6 +5,9 @@ import Navbar from "./components/Layout/Navbar/Navbar";
 import ReduxProvider from "@/redux/provider";
 import { Toaster } from "sonner";
 import Header from "./components/Layout/Header";
+import Logo from "./components/Layout/Logo";
+import Wrapper from "./components/Layout/Wrapper";
+import AppContainer from "./components/Layout/AppContainer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,12 +29,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} flex flex-row h-screen w-full bg-zinc-950`}
+        className={`${inter.className} flex flex-col lg:flex-row h-screen w-full bg-zinc-900`}
       >
         <ReduxProvider>
-          <Toaster richColors />
-          <Header />
-          {children}
+          <Wrapper>
+            <Logo />
+            <Toaster richColors />
+            <AppContainer>
+              <Navbar />
+              <div className="w-full h-full overflow-y-auto">{children}</div>
+            </AppContainer>
+          </Wrapper>
         </ReduxProvider>
       </body>
     </html>

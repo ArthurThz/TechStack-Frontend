@@ -5,12 +5,12 @@ import { motion } from "framer-motion";
 
 const HeroSection = () => {
   return (
-    <motion.div className="h-full w-full flex flex-col items-center justify-center bg-zinc-900 lg:flex-row-reverse lg:items-center lg:justify-center gap-6 lg:gap-40">
+    <motion.div className="h-screen w-full flex flex-col items-center justify-center bg-zinc-900 lg:flex-row-reverse lg:items-center lg:justify-center gap-6 lg:gap-40">
       <motion.div
         initial={{ opacity: 0, x: -100 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.4 }}
-        className="flex justify-center w-[250px] galaxy:w-[290px] iphonexr:w-[400px] md:w-[480px] h-auto"
+        className="flex justify-center w-[250px] galaxy:w-[290px] iphonexr:w-[340px] md:w-[480px] h-auto"
       >
         <Image
           src="/hero-image.svg"
@@ -36,7 +36,7 @@ const HeroSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.2, delay: 0.2 }}
-          className="text-green-haze-500 px-2 text-sm md:text-lg text-justify whitespace-pre-line"
+          className="text-green-haze-500 px-2 text-sm md:text-lg text-justify whitespace-pre-line lg:pr-4"
         >
           Publique artigos, dicas ou expêriencias que você deseja compartilhar,
           aqui você poderá encontrar pessoas que estão trilhando o caminho para
@@ -54,7 +54,7 @@ const HeroSection = () => {
             href="/LogIn"
             className="rounded-full px-4 text-sm md:text-md md:px-6 py-2 bg-green-haze-600 text-white shadow-md shadow-green-haze-800 hover:bg-green-haze-500 hover:shadow-lg hover:shadow-green-haze-500 transition-all"
           >
-            Criar Publicação
+            Acessar Plataforma
           </Link>
           <Link
             href="/SignUp"
@@ -64,7 +64,6 @@ const HeroSection = () => {
           </Link>
         </motion.div>
       </motion.div>
-      {/* mobile image */}
     </motion.div>
   );
 };
