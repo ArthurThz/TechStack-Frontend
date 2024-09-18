@@ -14,6 +14,7 @@ import PasswordInput from "../Layout/Input/PasswordInput";
 import ConfirmButton from "../Layout/Button/ConfirmButton";
 import { apiRoute } from "@/services/api";
 import { logIn } from "@/redux/features/auth-slice";
+import { toast } from "sonner";
 
 const LoginForm = () => {
   // Router
@@ -29,9 +30,25 @@ const LoginForm = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   // Login funtion
-  const onSubmit = async (data: FieldValues) => {
-    const response = await axios.post("/api/login", data);
-    console.log(response);
+  const onSubmit = async (userData: FieldValues) => {
+    const response = await axios.post("/api/login", userData);
+    const { data } = response;
+
+    const { responseError } = data;
+
+    if (responseError) {
+      toast.error(responseError.message);
+    }
+
+    const { token, user } = data;
+
+    const authUser = {
+      id: user.id,
+      token: token,
+    };
+    dispatch(logIn(authUser));
+    router.push("/Feed");
+
     // try {
     //   const response = await apiRoute.post("/users/login", data);
     //   if (response.status !== 201) {

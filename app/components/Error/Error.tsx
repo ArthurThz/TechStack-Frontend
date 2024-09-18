@@ -1,11 +1,21 @@
+"use client";
+import { error } from "console";
 import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
 
-type ErrorProps = {
-  errorMessage: string;
+export type ErrorProps = {
+  title: string;
+  message?: string;
+  code?: number;
 };
 
-const Error = ({ errorMessage }: ErrorProps) => {
-  console.log(errorMessage);
+const Error = ({ code, message, title }: ErrorProps) => {
+  if (!code) {
+    code = 0;
+    message = "Tente novamente mais tarde!";
+    title = "Opa, parece que algo deu errado!";
+  }
   return (
     <div className="h-screen w-full flex flex-col items-center justify-center px-4  gap-4">
       <Image
@@ -15,13 +25,15 @@ const Error = ({ errorMessage }: ErrorProps) => {
         width={350}
         height={300}
       />
-      <h1 className="text-3xl text-red-600 font-bold">
-        Parece que algo deu errado :(
-      </h1>
-      <h2 className="text-xl text-white font-medium text-center">
-        Estamos trabalhando para identificar o problema, tente novamente mais
-        tarde!
-      </h2>
+      <h1 className="text-3xl text-red-600 font-bold">{title}</h1>
+      <h2 className="text-2xl text-white font-medium text-center">{message}</h2>
+
+      <Link
+        href="/"
+        className="font-bold text-green-haze-500 underline text-lg"
+      >
+        Voltar ao inicio
+      </Link>
     </div>
   );
 };

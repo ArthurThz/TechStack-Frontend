@@ -8,8 +8,8 @@ import NavItem from "./Navitem";
 import { FaDoorOpen, FaHome } from "react-icons/fa";
 import { FaSquarePlus } from "react-icons/fa6";
 import { FaUser } from "react-icons/fa";
-import { IoLogOut } from "react-icons/io5";
 import LogOutButton from "./LogoutButton";
+import axios from "axios";
 
 const Navbar = () => {
   const router = useRouter();
@@ -17,7 +17,8 @@ const Navbar = () => {
 
   const dispatch = useDispatch<AppDispatch>();
 
-  const handleLogOut = () => {
+  const handleLogOut = async () => {
+    await axios.post("api/logout");
     dispatch(logOut());
     router.push("/");
   };

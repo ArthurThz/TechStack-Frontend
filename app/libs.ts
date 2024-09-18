@@ -5,11 +5,22 @@ type cookiesProps = {
     value:string
 }
 
+
 export const createCookie = ({ name, value }: cookiesProps) => {
     cookies().set(
         {
             name,
-            value
+            value,
+            
         }
+        
     )
+}
+
+export const deleteCookie = ({name} : {name:string}) =>{
+    cookies().delete({name})
+}
+
+export const checkIfUserIsLoggedIn = () => {
+
 }

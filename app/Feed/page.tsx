@@ -1,13 +1,18 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import FeedPostContainer from "../components/Post/Feed/FeedPostContainer";
 import { usePosts } from "../hooks/useFeedPosts";
 import Loader from "../components/Layout/Loader";
 import Error from "../components/Error/Error";
+import { useAppSelector } from "@/redux/store";
 const Feed = () => {
-  const { posts, error, isLoadingFeed } = usePosts();
+  const { token } = useAppSelector((state) => state.authReducer.value);
+  const { posts, error, isLoadingFeed } = usePosts({ token });
 
-  if (error) return <Error errorMessage={error} />;
+  if (error)
+    return (
+      <Error code={error.code} title={error.title} message={error.message} />
+    );
 
   if (isLoadingFeed) return <Loader />;
   return (

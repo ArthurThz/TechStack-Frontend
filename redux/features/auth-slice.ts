@@ -14,10 +14,7 @@ type AuthState = {
 
 type UserData = {
     token:string,
-    user:{
-        id:string,
-    
-        }
+    id:string,
 }
 const initialState = {
     value:{
@@ -35,14 +32,14 @@ export const auth = createSlice({
         logOut: () => initialState,
         logIn: (state, action : PayloadAction<UserData>) => {
             
-            const { id }  = action.payload.user
+            const id  = action.payload.id
             const  token  = action.payload.token
 
             return {
                 value:{
                     isAuth:true,
                     token:token,
-                    id,
+                    id:id,
                  
                 }
             }

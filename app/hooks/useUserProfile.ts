@@ -3,22 +3,33 @@ import { UserProps } from "../types/user";
 import { apiRoute } from "@/services/api";
 import { PostProps } from "../types/posts";
 import { toast } from "sonner";
+import { ErrorProps } from "../components/Error/Error";
 
-export const useUserProfileHeader = ({ id }: { id: string }) => {
+ type UserProfileHeaderProps = { id: string, token:string }
+
+  export const useUserProfileHeader = ({ id, token }: UserProfileHeaderProps) => {
+    
   const [user, setUser] = useState<UserProps | null>(null);
+
   const [posts, setPosts] = useState<PostProps[]>([])
 
   const [isLoadingProfile, setIsLoadingProfile] = useState(false);
 
-  const [userProfileError, setUserProfileError] = useState<string | null>(null);
+  const [userProfileError, setUserProfileError] = useState<ErrorProps>();
+
+  
 
   const fetchUserProfileData = async () => {
 
     try {
       setIsLoadingProfile(true);
-      setUserProfileError(null);
       
-      const response = await apiRoute.get(`/user/profile/${id}`);
+      
+      const response = await apiRoute.get(`/user/profile/${id}`,{
+        headers:{
+          Authorization: `Bearer ${token}`,
+        }
+      });
       
       if (response.data) {
         const { userInfo, userPosts } = response.data;
@@ -28,10 +39,14 @@ export const useUserProfileHeader = ({ id }: { id: string }) => {
         setUser({ ...userInfo[0], qtdPosts });
         setPosts(userPosts)
       } else {
-        throw new Error("Dados inválidos da API.");
+        setUserProfileError({
+          code:500,
+          title:"Houve um erro ao carregar os seus dados",
+          message:"Parece que seus dados não foram carregados corretamente, por favor tente novamente!"
+        });
       }
     } catch (err: any) {
-      setUserProfileError(err.message );
+      console.error(err.message)
       return
       
     } finally {
@@ -63,6 +78,17 @@ export const useUserProfileHeader = ({ id }: { id: string }) => {
   };
 
   useEffect(() => {
+    if(!token){
+      setUserProfileError(
+        {
+        code:401,
+        message:"Parece que você não tem permissão para acessar esta área, faça login para continuar",
+        title:"Não autorizado!"
+      }
+    )
+      return
+    }
+  
     fetchUserProfileData();
   }, [id]);
 

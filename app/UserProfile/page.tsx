@@ -8,16 +8,24 @@ import Loader from "../components/Layout/Loader";
 import Error from "../components/Error/Error";
 
 const UserProfile = () => {
-  const { id } = useAppSelector((state) => state.authReducer.value);
+  const { id, token } = useAppSelector((state) => state.authReducer.value);
+
   const {
     user,
     userProfileError,
     posts,
     handleOnDeletePost,
     isLoadingProfile,
-  } = useUserProfileHeader({ id });
+  } = useUserProfileHeader({ id, token });
 
-  if (userProfileError) return <Error errorMessage={userProfileError} />;
+  if (userProfileError)
+    return (
+      <Error
+        code={userProfileError.code}
+        title={userProfileError.title}
+        message={userProfileError.message}
+      />
+    );
 
   if (isLoadingProfile) return <Loader />;
 
